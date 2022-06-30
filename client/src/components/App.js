@@ -1,21 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import '../App.css';
+import { useState } from 'react';
+import NavBar from './NavBar';
+import Container from './Container';
+import Footer from './Footer';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch('/hello')
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+  const [currentUser, setCurrentUser] = useState({});
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/testing" element={<h1>Testing</h1>} />
-        <Route path="/" element={<h1>Home</h1>} />
-      </Routes>
+      <NavBar />
+      <Container />
+      <Footer />
     </div>
   );
 }
