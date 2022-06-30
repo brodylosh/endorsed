@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Form, Button } from 'react-bootstrap';
 
-function SignUp() {
+function SignUp({ setCurrentUser }) {
   // User Type:
   const [userType, setUserType] = useState('athlete');
 
   // Athlete Fields:
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [athleteImage, setAthleteImage] = useState('');
+  const [athleteImage, setAthleteImage] = useState(null);
   const [university, setUniversity] = useState('');
   const [sport, setSport] = useState('');
   const [year, setYear] = useState('');
@@ -21,7 +21,7 @@ function SignUp() {
 
   // Collaborator Fields:
   const [name, setName] = useState('');
-  const [collaboratorImage, setCollaboratorImage] = useState('');
+  const [collaboratorImage, setCollaboratorImage] = useState(null);
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -35,6 +35,9 @@ function SignUp() {
 
   // Errors:
   const [errors, setErrors] = useState([]);
+
+  // Navigation:
+  const navigate = useNavigate();
 
   // Functions:
   function athleteSignUp(e) {
@@ -61,12 +64,11 @@ function SignUp() {
       body: JSON.stringify(athlete),
     }).then((res) => {
       if (res.ok) {
-        res.json().then(console.log);
-        // navigate('/');
+        res.json().then(setCurrentUser);
+        navigate('/');
       } else {
         res.json().then((data) => {
-          console.log(data.errors);
-          // setErrors(data.errors);
+          setErrors(data.errors);
         });
       }
     });
@@ -76,6 +78,7 @@ function SignUp() {
     e.preventDefault();
     const collaborator = {
       name: name,
+      image: collaboratorImage,
       address: address,
       city: city,
       state: state,
@@ -91,12 +94,11 @@ function SignUp() {
       body: JSON.stringify(collaborator),
     }).then((res) => {
       if (res.ok) {
-        res.json().then(console.log);
-        // navigate('/');
+        res.json().then(setCurrentUser);
+        navigate('/');
       } else {
         res.json().then((data) => {
-          console.log(data.errors);
-          // setErrors(data.errors);
+          setErrors(data.errors);
         });
       }
     });
@@ -139,8 +141,7 @@ function SignUp() {
             <Form.Label>Image</Form.Label>
             <Form.Control
               type="file"
-              value={athleteImage}
-              onChange={(e) => setAthleteImage(e.target.value)}
+              onChange={(e) => setAthleteImage(e.target.files[0])}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -256,13 +257,17 @@ function SignUp() {
           <br></br>
           <br></br>
           <h4>Already a member?</h4>
-          <NavLink to="/login" className="d-grid gap-2">
-            <Button sz="lg">Log In</Button>
-          </NavLink>
+          <Button
+            sz="lg"
+            className="d-grid gap-2"
+            onClick={() => navigate('/login')}
+          >
+            Log In
+          </Button>
           <br></br>
         </Form>
       ) : (
-        <Form className="rounded p-4 p-sm-3 form">
+        <Form className="rounded p-4 p-sm-3 form" onSubmit={collaboratorSignUp}>
           <h1>Sign Up</h1>
           <br></br>
           <ToggleButtonGroup
@@ -288,8 +293,7 @@ function SignUp() {
             <Form.Label>Image</Form.Label>
             <Form.Control
               type="file"
-              value={collaboratorImage}
-              onChange={(e) => setCollaboratorImage(e.target.value)}
+              onChange={(e) => setCollaboratorImage(e.target.files[0])}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -377,9 +381,13 @@ function SignUp() {
           <br></br>
           <br></br>
           <h4>Already a member?</h4>
-          <NavLink to="/login" className="d-grid gap-2">
-            <Button sz="lg">Log In</Button>
-          </NavLink>
+          <Button
+            sz="lg"
+            className="d-grid gap-2"
+            onClick={() => navigate('/login')}
+          >
+            Log In
+          </Button>
           <br></br>
         </Form>
       )}
