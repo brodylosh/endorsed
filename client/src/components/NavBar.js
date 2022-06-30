@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -9,6 +10,8 @@ import {
 // import BorderColorIcon from '@mui/icons-material/BorderColor';
 
 function NavBar() {
+  const navigate = useNavigate();
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -19,10 +22,18 @@ function NavBar() {
           Endorsed
         </Typography>
         <Stack direction="row" spacing={2}>
-          <Button color="inherit">Athletes</Button>
-          <Button color="inherit">Deals</Button>
-          <Button color="inherit">Collaborators</Button>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={() => navigate('/athletes')}>
+            Athletes
+          </Button>
+          <Button color="inherit" onClick={() => navigate('/deals')}>
+            Deals
+          </Button>
+          <Button color="inherit" onClick={() => navigate('/collaborators')}>
+            Collaborators
+          </Button>
+          <Button color="inherit" onClick={() => navigate('/login')}>
+            Login
+          </Button>
         </Stack>
       </Toolbar>
     </AppBar>

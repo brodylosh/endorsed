@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Container />
+      <Container currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Footer />
     </div>
   );

@@ -6,13 +6,19 @@ import AthleteList from './AthleteList';
 import DealList from './DealList';
 import CollaboratorList from './CollaboratorList';
 
-function Container() {
+function Container({ setCurrentUser }) {
   return (
     <div className="Container">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/login"
+          element={<Login setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/signup"
+          element={<SignUp setCurrentUser={setCurrentUser} />}
+        />
         <Route path="/athletes" element={<AthleteList />} />
         <Route path="/deals" element={<DealList />} />
         <Route path="/collaborators" element={<CollaboratorList />} />

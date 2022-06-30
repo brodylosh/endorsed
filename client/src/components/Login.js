@@ -1,15 +1,41 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
-function Login() {
+function Login({ setCurrentUser }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState('');
 
+  const navigate = useNavigate();
+
+  function login(e) {
+    e.preventDefault();
+    const user = {
+      username: username,
+      password: password,
+    };
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.id) {
+          // setCurrentBuyer(data);
+          navigate('/deals');
+        } else {
+          setErrors(data.error);
+        }
+      });
+  }
+
   return (
     <div className="Login">
-      <Form className="rounded p-4 p-sm-3 form">
+      <Form className="rounded p-4 p-sm-3 form" onSubmit={login}>
         <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -34,11 +60,13 @@ function Login() {
         <h4>{errors}</h4>
         <br></br>
         <h4>New to NIL App?</h4>
-        <NavLink to="/signup" className="d-grid gap-2">
-          <Button size="lg" to="/signup">
-            Sign Up
-          </Button>
-        </NavLink>
+        <Button
+          size="lg"
+          className="d-grid gap-2"
+          onClick={() => navigate('/signup')}
+        >
+          Sign Up
+        </Button>
         <br></br>
       </Form>
     </div>
