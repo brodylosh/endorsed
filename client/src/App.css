@@ -1,10 +1,22 @@
 .App {
   text-align: center;
+  background-color: #454545;
+  color: white;
 }
 
-.home-banner {
+.home-feature-image {
+  position: relative;
+}
+
+.feature-image {
   opacity: .3;
   width: 100%;
+}
+
+.feature-image-header {
+  position: absolute;
+  top: 50%;
+  left: 50%
 }
 
 .form {

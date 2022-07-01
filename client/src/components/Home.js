@@ -1,14 +1,19 @@
+import { Button } from 'react-bootstrap';
+
 function Home() {
   return (
     <div className="Home">
-      <div>
+      <div className="home-feature-image">
         <img
           src="https://i.ibb.co/k9rHPWM/IMG-2626.jpg"
           alt="Mel Tucker shaking Sparty's hand"
-          className="home-banner"
+          className="feature-image"
         />
-        <h1>connecting student-athletes to paid sponsors</h1>
-        <h4>the world's largest digital NIL marketplace</h4>
+        <div className="feature-image-header">
+          <h1>THE WORLD'S LARGEST DIGITAL NIL MARKETPLACE</h1>
+          <h4>connecting student-athletes to paid sponsors</h4>
+          <Button>See Active Deals</Button>
+        </div>
       </div>
       <div>
         <h1>Brief Overview</h1>

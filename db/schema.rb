@@ -89,12 +89,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
     t.string "description"
     t.string "criteria"
     t.string "sport"
-    t.string "class"
+    t.string "year"
     t.integer "age"
     t.string "gender"
     t.date "expiration_date"
     t.string "location"
     t.boolean "completed"
+    t.integer "application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

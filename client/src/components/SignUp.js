@@ -221,7 +221,7 @@ function SignUp({ setCurrentUser }) {
             />
           </Form.Group>
           <br></br>
-          <hr class="solid"></hr>
+          <hr className="solid"></hr>
           <br></br>
           <Form.Group className="mb-3">
             <Form.Label>Username*</Form.Label>
@@ -345,7 +345,7 @@ function SignUp({ setCurrentUser }) {
             />
           </Form.Group>
           <br></br>
-          <hr class="solid"></hr>
+          <hr className="solid"></hr>
           <br></br>
           <Form.Group className="mb-3">
             <Form.Label>Username*</Form.Label>

@@ -1,38 +1,49 @@
+import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
+import Button from '@mui/material/Button';
 
 function Footer() {
   return (
     <footer>
-      <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 10 }} color="gray">
+      <Box
+        px={{ xs: 3, sm: 10 }}
+        py={{ xs: 5, sm: 10 }}
+        style={{ backgroundColor: 'white', color: '#454545' }}
+      >
         <Container maxWidth="lg">
-          <Grid container spacing={5}>
+          <Grid container spacing={2}>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>
-                <Link href="/athletes" color="inherit">
-                  Athletes
-                </Link>
-              </Box>
+              <Button
+                component={Link}
+                to="/athletes"
+                sx={{ my: 2, color: 'black', display: 'block' }}
+              >
+                Athletes
+              </Button>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>
-                <Link href="/deals" color="inherit">
-                  Deals
-                </Link>
-              </Box>
+              <Button
+                component={Link}
+                to="/deals"
+                sx={{ my: 2, color: 'black', display: 'block' }}
+              >
+                Deals
+              </Button>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>
-                <Link href="/collaborators" color="inherit">
-                  Collaborators
-                </Link>
-              </Box>
+              <Button
+                component={Link}
+                to="/collaborators"
+                sx={{ my: 2, color: 'black', display: 'block' }}
+              >
+                Collaborators
+              </Button>
             </Grid>
           </Grid>
           <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
-            NIL App &reg; {new Date().getFullYear()}
+            endorsed&reg; {new Date().getFullYear()}
           </Box>
         </Container>
       </Box>

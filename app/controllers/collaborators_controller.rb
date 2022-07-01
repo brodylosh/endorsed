@@ -1,5 +1,9 @@
 class CollaboratorsController < ApplicationController
     
+    def me
+        render json: @current_user
+    end
+    
     def index
         collaborators = Collaborator.all 
         render json: collaborators, status: :ok

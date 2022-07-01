@@ -18,6 +18,6 @@ class DealsController < ApplicationController
     private
 
     def deal_params
-        params.permit(:deal_id, :athlete_id, :title, :offer, :description, :criteria, :sport, :class, :age, :gender, :expiration_date, :location, :completed)
+        params.permit(:collaborator_id, :athlete_id, :title, :offer, :description, :criteria, :sport, :year, :age, :gender, :expiration_date, :location, :completed, :application_id)
     end
 end

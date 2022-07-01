@@ -8,12 +8,13 @@ class CreateDeals < ActiveRecord::Migration[7.0]
       t.string :description
       t.string :criteria
       t.string :sport
-      t.string :class
+      t.string :year
       t.integer :age
       t.string :gender
       t.date :expiration_date
       t.string :location
       t.boolean :completed
+      t.integer :application_id
 
       t.timestamps
     end

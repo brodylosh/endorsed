@@ -1,8 +1,24 @@
-function CollaboratorList() {
+import { Container, Row } from 'react-bootstrap';
+import CollaboratorCard from './CollaboratorCard';
+
+function CollaboratorList({ currentUser, collaboratorList }) {
+  let renderCollaborators = collaboratorList.map((collaborator) => {
+    return (
+      <CollaboratorCard
+        currentUser={currentUser}
+        key={collaborator.id}
+        collaborator={collaborator}
+      />
+    );
+  });
+
   return (
-    <div className="CollaboratorList">
-      <h1>Collaborator List</h1>
-    </div>
+    <>
+      <br />
+      <Container>
+        <Row className="g-4">{renderCollaborators}</Row>
+      </Container>
+    </>
   );
 }
 

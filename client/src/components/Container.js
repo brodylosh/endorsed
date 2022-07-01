@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
@@ -6,7 +7,23 @@ import AthleteList from './AthleteList';
 import DealList from './DealList';
 import CollaboratorList from './CollaboratorList';
 
-function Container({ setCurrentUser }) {
+function Container({ currentUser, setCurrentUser }) {
+  const [athleteList, setAthleteList] = useState([]);
+  const [dealList, setDealList] = useState([]);
+  const [collaboratorList, setCollaboratorList] = useState([]);
+
+  useEffect(() => {
+    fetch('/athletes')
+      .then((resp) => resp.json())
+      .then(setAthleteList);
+    fetch('/deals')
+      .then((resp) => resp.json())
+      .then(setDealList);
+    fetch('/collaborators')
+      .then((resp) => resp.json())
+      .then(setCollaboratorList);
+  }, []);
+
   return (
     <div className="Container">
       <Routes>
@@ -19,9 +36,25 @@ function Container({ setCurrentUser }) {
           path="/signup"
           element={<SignUp setCurrentUser={setCurrentUser} />}
         />
-        <Route path="/athletes" element={<AthleteList />} />
-        <Route path="/deals" element={<DealList />} />
-        <Route path="/collaborators" element={<CollaboratorList />} />
+        <Route
+          path="/athletes"
+          element={
+            <AthleteList currentUser={currentUser} athleteList={athleteList} />
+          }
+        />
+        <Route
+          path="/deals"
+          element={<DealList currentUser={currentUser} dealList={dealList} />}
+        />
+        <Route
+          path="/collaborators"
+          element={
+            <CollaboratorList
+              currentUser={currentUser}
+              collaboratorList={collaboratorList}
+            />
+          }
+        />
       </Routes>
     </div>
   );

@@ -1,8 +1,18 @@
-function DealList() {
+import { Container, Row } from 'react-bootstrap';
+import DealCard from './DealCard';
+
+function DealList({ currentUser, dealList }) {
+  let renderDeals = dealList.map((deal) => {
+    return <DealCard currentUser={currentUser} key={deal.id} deal={deal} />;
+  });
+
   return (
-    <div className="DealList">
-      <h1>Deal List</h1>
-    </div>
+    <>
+      <br />
+      <Container>
+        <Row className="g-4">{renderDeals}</Row>
+      </Container>
+    </>
   );
 }
 

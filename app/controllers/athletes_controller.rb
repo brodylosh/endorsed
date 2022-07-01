@@ -1,5 +1,9 @@
 class AthletesController < ApplicationController
 
+    def me
+        render json: @current_user
+    end
+    
     def index
         athletes = Athlete.all 
         render json: athletes, status: :ok
@@ -18,6 +22,6 @@ class AthletesController < ApplicationController
     private
 
     def athlete_params
-        params.permit(:first_name, :last_name, :image, :university, :sport, :class, :birthday, :gender, :bio, :email, :phone_number, :username, :password, :athlete)
+        params.permit(:first_name, :last_name, :image, :university, :sport, :year, :birthday, :gender, :bio, :email, :phone_number, :username, :password, :athlete)
     end
 end
