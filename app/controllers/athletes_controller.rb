@@ -1,8 +1,9 @@
 class AthletesController < ApplicationController
+    skip_before_action :authorize, only: [:index, :show]
 
-    def me
-        render json: @current_user
-    end
+    # def me
+    #     render json: @current_athlete
+    # end
     
     def index
         athletes = Athlete.all 
@@ -10,12 +11,14 @@ class AthletesController < ApplicationController
     end
 
     def show
-        athlete = Athlete.find(params[:id])
-        render json: athlete, status: :ok
+        render json: @current_athlete
+        # athlete = Athlete.find(params[:id])
+        # render json: athlete, status: :ok
     end
 
     def create
         athlete = Athlete.create!(athlete_params)
+        session[:athlete_id] = athlete.id
         render json: athlete, status: :created
     end
 

@@ -1,4 +1,20 @@
 class SessionsController < ApplicationController
+    skip_before_action :authorize, only: :create
+    
+    # def create
+    #     athlete = Athlete.find_by(username: params[:username])
+    #     if athlete&.authenticate(params[:password])
+    #       session[:athlete_id] = athlete.id
+    #       render json: athlete
+    #     else
+    #       render json: { error: "Invalid username or password" }, status: :unauthorized
+    #     end
+    # end
+
+    # def destroy
+    #     session.delete :athlete_id
+    #     head :no_content
+    # end
     
     def create
         athlete = Athlete.find_by(username: params[:username])
@@ -21,11 +37,11 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        if session[:athlete_id]
-            session.delete :athlete_id
+        if session[:collaborator_id]
+            session.delete :collaborator_id
             head :no_content
         else 
-            session.delete :collaborator_id
+            session.delete :athlete_id
             head :no_content
         end
     end

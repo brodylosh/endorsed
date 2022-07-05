@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
-function Login({ setCurrentBuyer }) {
+function Login({ setCurrentUser }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState('');
@@ -25,9 +25,8 @@ function Login({ setCurrentBuyer }) {
       .then((resp) => resp.json())
       .then((data) => {
         if (data.id) {
-          setCurrentBuyer(data);
-          console.log(data);
-          navigate('/deals');
+          setCurrentUser(data);
+          navigate('/me');
         } else {
           setErrors(data.error);
         }

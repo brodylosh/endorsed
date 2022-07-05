@@ -1,4 +1,5 @@
 class DealsController < ApplicationController
+    skip_before_action :authorize
 
     def index
         deals = Deal.all 

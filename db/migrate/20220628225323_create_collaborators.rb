@@ -9,7 +9,7 @@ class CreateCollaborators < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :phone_number
       t.string :username
-      t.string :password
+      t.string :password_digest
 
       t.timestamps
     end

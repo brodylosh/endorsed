@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
     t.string "email"
     t.string "phone_number"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.boolean "athlete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
     t.string "email"
     t.string "phone_number"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
