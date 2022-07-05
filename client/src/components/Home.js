@@ -1,4 +1,5 @@
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -12,7 +13,9 @@ function Home() {
         <div className="feature-image-header">
           <h1>THE WORLD'S LARGEST DIGITAL NIL MARKETPLACE</h1>
           <h4>connecting student-athletes to paid sponsors</h4>
-          <Button>See Active Deals</Button>
+          <Button component={Link} to="/deals" variant="success">
+            See Active Deals
+          </Button>
         </div>
       </div>
       <div>

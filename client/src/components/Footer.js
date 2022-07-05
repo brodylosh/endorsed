@@ -42,7 +42,12 @@ function Footer() {
               </Button>
             </Grid>
           </Grid>
-          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
+          <Box
+            textAlign="center"
+            fontFamily="bindhu"
+            pt={{ xs: 5, sm: 10 }}
+            pb={{ xs: 5, sm: 0 }}
+          >
             endorsed&reg; {new Date().getFullYear()}
           </Box>
         </Container>

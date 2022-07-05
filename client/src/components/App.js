@@ -7,18 +7,18 @@ import Footer from './Footer';
 function App() {
   const [currentUser, setCurrentUser] = useState();
 
-  function logOut() {
-    setCurrentUser(null);
-    fetch('/logout', {
-      method: 'DELETE',
-    });
+  if (currentUser && currentUser.athlete) {
+    console.log('athlete');
+  } else if (currentUser && !currentUser.athlete) {
+    console.log('collaborator');
+  } else {
+    console.log('no user');
   }
 
   return (
     <div className="App">
       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Container currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <button onClick={logOut}>Log Out</button>
       <Footer />
     </div>
   );

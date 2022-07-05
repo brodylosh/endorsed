@@ -109,9 +109,9 @@ function SignUp({ setCurrentUser }) {
       {userType === 'athlete' ? (
         <Form className="rounded p-4 p-sm-3 form" onSubmit={athleteSignUp}>
           <h1>Sign Up</h1>
-          <br></br>
+          <br />
           <ToggleButtonGroup
-            color="primary"
+            color="success"
             value={userType}
             exclusive
             onChange={(e) => setUserType(e.target.value)}
@@ -119,8 +119,8 @@ function SignUp({ setCurrentUser }) {
             <ToggleButton value="athlete">Student-Athlete</ToggleButton>
             <ToggleButton value="collaborator">Collaborator</ToggleButton>
           </ToggleButtonGroup>
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <Form.Group className="mb-3 half-left">
             <Form.Label>First Name*</Form.Label>
             <Form.Control
@@ -220,9 +220,9 @@ function SignUp({ setCurrentUser }) {
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </Form.Group>
-          <br></br>
+          <br />
           <hr className="solid"></hr>
-          <br></br>
+          <br />
           <Form.Group className="mb-3">
             <Form.Label>Username*</Form.Label>
             <Form.Control
@@ -244,34 +244,36 @@ function SignUp({ setCurrentUser }) {
               numbers, and must not contain spaces, special characters, or
               emoji.
             </Form.Text>
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <Form.Text muted>*required fields</Form.Text>
           </Form.Group>
           {errors.map((error) => {
             return <p>{error}</p>;
           })}
-          <Button variant="primary" type="submit">
+          <Button variant="success" type="submit">
             Sign Up
           </Button>
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <h4>Already a member?</h4>
-          <Button
-            sz="lg"
-            className="d-grid gap-2"
-            onClick={() => navigate('/login')}
-          >
-            Log In
-          </Button>
-          <br></br>
+          <div className="d-grid gap-2">
+            <Button
+              size="lg"
+              variant="outline-success"
+              onClick={() => navigate('/login')}
+            >
+              Log In
+            </Button>
+          </div>
+          <br />
         </Form>
       ) : (
         <Form className="rounded p-4 p-sm-3 form" onSubmit={collaboratorSignUp}>
           <h1>Sign Up</h1>
-          <br></br>
+          <br />
           <ToggleButtonGroup
-            color="primary"
+            color="success"
             value={userType}
             exclusive
             onChange={(e) => setUserType(e.target.value)}
@@ -279,8 +281,8 @@ function SignUp({ setCurrentUser }) {
             <ToggleButton value="athlete">Student-Athlete</ToggleButton>
             <ToggleButton value="collaborator">Collaborator</ToggleButton>
           </ToggleButtonGroup>
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <Form.Group className="mb-3">
             <Form.Label>Name*</Form.Label>
             <Form.Control
@@ -344,9 +346,9 @@ function SignUp({ setCurrentUser }) {
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </Form.Group>
-          <br></br>
+          <br />
           <hr className="solid"></hr>
-          <br></br>
+          <br />
           <Form.Group className="mb-3">
             <Form.Label>Username*</Form.Label>
             <Form.Control
@@ -368,27 +370,29 @@ function SignUp({ setCurrentUser }) {
               numbers, and must not contain spaces, special characters, or
               emoji.
             </Form.Text>
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <Form.Text muted>*required fields</Form.Text>
           </Form.Group>
           {errors.map((error) => {
             return <p>{error}</p>;
           })}
-          <Button variant="primary" type="submit">
+          <Button variant="success" type="submit">
             Sign Up
           </Button>
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           <h4>Already a member?</h4>
-          <Button
-            sz="lg"
-            className="d-grid gap-2"
-            onClick={() => navigate('/login')}
-          >
-            Log In
-          </Button>
-          <br></br>
+          <div className="d-grid gap-2">
+            <Button
+              size="lg"
+              variant="outline-success"
+              onClick={() => navigate('/login')}
+            >
+              Log In
+            </Button>
+          </div>
+          <br />
         </Form>
       )}
     </div>

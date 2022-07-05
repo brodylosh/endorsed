@@ -22,8 +22,14 @@ class ApplicationController < ActionController::API
   end
 
   def authorize
-    @current_athlete = Athlete.find_by(id: session[:athlete_id])
+    athlete = Athlete.find_by(id: session[:athlete_id])
+    if athlete
+      @current_user = athlete
+    else
+      collaborator = Collaborator.find_by(id: session[:collaborator_id])
+      @current_user = collaborator
+    end  
 
-    render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_athlete
+    render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
   end
 end

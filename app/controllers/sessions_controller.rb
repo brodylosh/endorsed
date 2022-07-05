@@ -37,11 +37,11 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        if session[:collaborator_id]
-            session.delete :collaborator_id
+        if session[:athlete_id]
+            session.delete :athlete_id
             head :no_content
         else 
-            session.delete :athlete_id
+            session.delete :collaborator_id
             head :no_content
         end
     end

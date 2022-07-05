@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -19,6 +19,8 @@ function NavBar({ currentUser, setCurrentUser }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -34,12 +36,13 @@ function NavBar({ currentUser, setCurrentUser }) {
     setAnchorElUser(null);
   };
 
-  // function logOut() {
-  //   setCurrentUser(null);
-  //   fetch('/logout', {
-  //     method: 'DELETE',
-  //   });
-  // }
+  function logOut() {
+    setCurrentUser(null);
+    fetch('/logout', {
+      method: 'DELETE',
+    });
+    navigate('/');
+  }
 
   return (
     <AppBar position="sticky" style={{ backgroundColor: '#2f2f2f' }}>
@@ -155,7 +158,9 @@ function NavBar({ currentUser, setCurrentUser }) {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center" onClick={logOut}>
+                      {setting}
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>

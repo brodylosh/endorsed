@@ -56,6 +56,7 @@ function Container({ currentUser, setCurrentUser }) {
           }
         />
       </Routes>
+      <br />
     </div>
   );
 }
