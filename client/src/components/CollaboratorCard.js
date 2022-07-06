@@ -1,12 +1,15 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Button, Modal } from 'react-bootstrap';
 
 function CollaboratorCard({ currentUser, collaborator }) {
+  const [show, setShow] = useState(false);
+
   const { name, address, city, state, remote } = collaborator;
 
   return (
@@ -34,8 +37,31 @@ function CollaboratorCard({ currentUser, collaborator }) {
         )}
       </CardContent>
       <CardActions>
-        <Button size="small">Contact</Button>
-        <Button size="small">View</Button>
+        <Button size="small" variant="success">
+          Contact
+        </Button>
+        <Button
+          size="small"
+          variant="outline-success"
+          onClick={() => setShow(true)}
+        >
+          View
+        </Button>
+        <Modal
+          show={show}
+          onHide={() => setShow(false)}
+          dialogClassName="modal-90w"
+          aria-labelledby="example-custom-modal-styling-title"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+              {name}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>lorem ipsom</p>
+          </Modal.Body>
+        </Modal>
       </CardActions>
     </Card>
   );

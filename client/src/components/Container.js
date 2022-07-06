@@ -55,6 +55,19 @@ function Container({ currentUser, setCurrentUser }) {
             />
           }
         />
+        {/* <Route
+          path="/athletes/:id"
+          element={<PopUp currentUser={currentUser} />}
+        />
+        <Route
+          path="/deals/:id"
+          element={<PopUp currentUser={currentUser} />}
+        />
+        <Route
+          path="/collaborators/:id"
+          element={<PopUp currentUser={currentUser} />}
+        />
+        <Route path="/me" element={<PopUp currentUser={currentUser} />} /> */}
       </Routes>
       <br />
     </div>

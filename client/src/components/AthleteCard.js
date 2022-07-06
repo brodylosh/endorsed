@@ -1,24 +1,32 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Button, Modal } from 'react-bootstrap';
 
 function AthleteCard({ currentUser, athlete }) {
-  const { first_name, last_name, birthday, university, sport, year } = athlete;
+  const [show, setShow] = useState(false);
+
+  const {
+    first_name,
+    last_name,
+    birthday,
+    university,
+    sport,
+    year,
+    bio,
+    image,
+  } = athlete;
+
+  console.log(athlete);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <br />
-      <CardMedia
-        component="img"
-        height="140"
-        src="https://cdn.hashnode.com/res/hashnode/image/upload/v1651857656900/jS_2jvtVJ.jpg"
-        // image="/static/images/cards/contemplative-reptile.jpg"
-        alt="User Avatar"
-      />
+      <CardMedia component="img" height="140" src={image} alt="User Avatar" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {first_name + ' ' + last_name}
@@ -38,8 +46,31 @@ function AthleteCard({ currentUser, athlete }) {
         </Typography> */}
       </CardContent>
       <CardActions>
-        <Button size="small">Contact</Button>
-        <Button size="small">View</Button>
+        <Button size="small" variant="success">
+          Contact
+        </Button>
+        <Button
+          size="small"
+          variant="outline-success"
+          onClick={() => setShow(true)}
+        >
+          View
+        </Button>
+        <Modal
+          show={show}
+          onHide={() => setShow(false)}
+          dialogClassName="modal-90w"
+          aria-labelledby="example-custom-modal-styling-title"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+              {first_name + ' ' + last_name}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>{bio}</p>
+          </Modal.Body>
+        </Modal>
       </CardActions>
     </Card>
   );

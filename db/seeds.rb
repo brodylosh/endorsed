@@ -5,11 +5,11 @@ Application.destroy_all
 
 #Athletes
 
-athlete1 = Athlete.create(first_name: 'Brody', last_name: 'Losh', university: 'Michigan State University', sport: 'Basketball', year: 'Graduate', birthday: DateTime.now.utc, gender: 'Male', bio: 'A graduate student-athlete with a large social footprint, seeking brands to collaborate with', email: 'brodylosh@gmail.com', phone_number: '2486138800', username: 'brodylosh', password: 'BrodyLosh!', athlete: true)
+athlete1 = Athlete.create(first_name: 'Brody', last_name: 'Losh', university: 'Michigan State University', sport: 'Basketball', year: 'Graduate', birthday: DateTime.now.utc, gender: 'Male', bio: 'A graduate student-athlete with a large social footprint, seeking brands to collaborate with', email: 'brodylosh@gmail.com', phone_number: '2486138800', username: 'brodylosh', password: 'BrodyLosh123!', athlete: true)
 
 #Collaborators
 
-collaborator1 = Collaborator.create(name: 'Rick\'s American Cafe', address: '224 Abbot Rd.', city: 'East Lansing', state: 'Michigan', remote: false, email: 'ricks@ricksamericancafe.com', phone_number: '5173512285', username: 'ricksamericancafe', password: 'RicksAmericanCafe!')
+collaborator1 = Collaborator.create(name: 'Rick\'s American Cafe', address: '224 Abbot Rd.', city: 'East Lansing', state: 'Michigan', remote: false, email: 'ricks@ricksamericancafe.com', phone_number: '5173512285', username: 'ricksamericancafe', password: 'RicksAmericanCafe123!')
 
 #Deals
 
