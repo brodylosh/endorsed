@@ -1,9 +1,5 @@
 class CollaboratorsController < ApplicationController
-    skip_before_action :authorize, only: [:index, :show]
-    
-    # def me
-    #     render json: @current_collaborator
-    # end
+    skip_before_action :authorize, only: [:index, :show, :create]
     
     def index
         collaborators = Collaborator.all 
@@ -11,9 +7,8 @@ class CollaboratorsController < ApplicationController
     end
 
     def show
-        render json: @current_collaborator
-        # collaborator = Collaborator.find(params[:id])
-        # render json: collaborator, status: :ok
+        collaborator = Collaborator.find(params[:id])
+        render json: collaborator, status: :ok
     end
 
     def create

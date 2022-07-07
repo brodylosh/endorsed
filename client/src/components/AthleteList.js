@@ -5,6 +5,7 @@ function AthleteList({ currentUser, athleteList }) {
   let renderAthletes = athleteList.map((athlete) => {
     return (
       <AthleteCard
+        className="cards"
         currentUser={currentUser}
         key={athlete.id}
         athlete={athlete}
@@ -13,12 +14,12 @@ function AthleteList({ currentUser, athleteList }) {
   });
 
   return (
-    <>
+    <div className="list">
       <br />
       <Container>
-        <Row className="g-4">{renderAthletes}</Row>
+        <Row>{renderAthletes}</Row>
       </Container>
-    </>
+    </div>
   );
 }
 

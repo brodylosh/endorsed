@@ -48,3 +48,9 @@
   text-align: left;
 }
 
+.list {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+

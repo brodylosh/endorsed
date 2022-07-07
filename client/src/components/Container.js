@@ -22,7 +22,7 @@ function Container({ currentUser, setCurrentUser }) {
     fetch('/collaborators')
       .then((resp) => resp.json())
       .then(setCollaboratorList);
-  }, []);
+  }, [currentUser]);
 
   return (
     <div className="Container">
@@ -34,7 +34,15 @@ function Container({ currentUser, setCurrentUser }) {
         />
         <Route
           path="/signup"
-          element={<SignUp setCurrentUser={setCurrentUser} />}
+          element={
+            <SignUp
+              setCurrentUser={setCurrentUser}
+              athleteList={athleteList}
+              setAthleteList={setAthleteList}
+              collaboratorList={collaboratorList}
+              setCollaboratorList={setCollaboratorList}
+            />
+          }
         />
         <Route
           path="/athletes"
@@ -55,19 +63,6 @@ function Container({ currentUser, setCurrentUser }) {
             />
           }
         />
-        {/* <Route
-          path="/athletes/:id"
-          element={<PopUp currentUser={currentUser} />}
-        />
-        <Route
-          path="/deals/:id"
-          element={<PopUp currentUser={currentUser} />}
-        />
-        <Route
-          path="/collaborators/:id"
-          element={<PopUp currentUser={currentUser} />}
-        />
-        <Route path="/me" element={<PopUp currentUser={currentUser} />} /> */}
       </Routes>
       <br />
     </div>

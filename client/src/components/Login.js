@@ -26,7 +26,7 @@ function Login({ setCurrentUser }) {
       .then((data) => {
         if (data.id) {
           setCurrentUser(data);
-          navigate('/me');
+          navigate('/deals');
         } else {
           setErrors(data.error);
         }

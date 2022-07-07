@@ -6,7 +6,7 @@ class Athlete < ApplicationRecord
     has_many :deals, through: :applications 
     has_many :collaborators, through: :deals
 
-    # validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
+    validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
 
     # PASSWORD_REQUIREMENTS = /\A
     #     (?=.{8,30})        # Must contain between 8 and 30 characters
