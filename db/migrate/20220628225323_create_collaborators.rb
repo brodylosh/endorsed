@@ -3,8 +3,6 @@ class CreateCollaborators < ActiveRecord::Migration[7.0]
     create_table :collaborators do |t|
       t.string :name
       t.string :address
-      t.string :city
-      t.string :state
       t.boolean :remote
       t.string :email
       t.string :phone_number

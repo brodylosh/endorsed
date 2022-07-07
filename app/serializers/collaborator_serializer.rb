@@ -1,3 +1,3 @@
 class CollaboratorSerializer < ActiveModel::Serializer
-  attributes :id, :name, :address, :city, :state, :remote, :email, :phone_number, :username, :password
+  attributes :id, :name, :address, :remote, :email, :phone_number, :username, :password
 end

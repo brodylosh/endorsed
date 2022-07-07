@@ -25,6 +25,6 @@ class CollaboratorsController < ApplicationController
     private
 
     def collaborator_params
-        params.permit(:name, :image, :address, :city, :state, :remote, :email, :phone_number, :username, :password)
+        params.permit(:name, :image, :address, :remote, :email, :phone_number, :username, :password)
     end
 end

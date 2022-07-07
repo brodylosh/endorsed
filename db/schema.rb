@@ -70,8 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
   create_table "collaborators", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "city"
-    t.string "state"
     t.boolean "remote"
     t.string "email"
     t.string "phone_number"

@@ -21,8 +21,6 @@ function AthleteCard({ currentUser, athlete }) {
     image,
   } = athlete;
 
-  console.log(athlete);
-
   return (
     <Card sx={{ maxWidth: 345 }}>
       <br />

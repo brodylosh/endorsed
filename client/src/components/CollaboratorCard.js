@@ -10,7 +10,7 @@ import { Button, Modal } from 'react-bootstrap';
 function CollaboratorCard({ currentUser, collaborator }) {
   const [show, setShow] = useState(false);
 
-  const { name, address, city, state, remote } = collaborator;
+  const { name, address, remote } = collaborator;
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -32,7 +32,7 @@ function CollaboratorCard({ currentUser, collaborator }) {
           </Typography>
         ) : (
           <Typography gutterBottom variant="h10" component="div">
-            {`${address} ${city},${state}`}
+            {`${address}`}
           </Typography>
         )}
       </CardContent>
