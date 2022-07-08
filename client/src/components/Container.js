@@ -27,7 +27,7 @@ function Container({ currentUser, setCurrentUser }) {
   return (
     <div className="Container">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home currentUser={currentUser} />} />
         <Route
           path="/login"
           element={<Login setCurrentUser={setCurrentUser} />}

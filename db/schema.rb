@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
     t.integer "offer"
     t.string "description"
     t.string "criteria"
+    t.string "university"
     t.string "sport"
     t.string "year"
     t.integer "age"

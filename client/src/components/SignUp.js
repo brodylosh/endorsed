@@ -234,8 +234,9 @@ function SignUp({ setCurrentUser }) {
             <Form.Check
               type="switch"
               name="remote"
+              defaultChecked="false"
               // value={false}
-              // onChange={(e) => !value}
+              onChange={(e) => console.log(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3 half-left">

@@ -27,7 +27,11 @@ function AthleteCard({ currentUser, athlete }) {
       <CardMedia
         component="img"
         height="140"
-        src={image_url}
+        src={
+          image_url
+            ? image_url
+            : 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'
+        }
         alt="User Avatar"
       />
       <CardContent>

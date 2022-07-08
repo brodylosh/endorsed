@@ -18,7 +18,11 @@ function CollaboratorCard({ currentUser, collaborator }) {
       <CardMedia
         component="img"
         height="140"
-        src={image_url}
+        src={
+          image_url
+            ? image_url
+            : 'https://www.zimplaza.co.zw/wp-content/uploads/placeholdercompany5f3438282f524800f1d49cd2921bb0a56101e1aa16097ebd313b64778fc7c4bd1611448792.png'
+        }
         alt="User Avatar"
       />
       <CardContent>
