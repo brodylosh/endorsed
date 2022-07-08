@@ -5,63 +5,36 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Form, Button } from 'react-bootstrap';
 
 function SignUp({ setCurrentUser }) {
-  // User Type:
   const [userType, setUserType] = useState('athlete');
 
-  // Athlete Fields:
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [athleteImage, setAthleteImage] = useState(null);
-  const [university, setUniversity] = useState('');
-  const [sport, setSport] = useState('');
-  const [year, setYear] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [gender, setGender] = useState('');
-  const [bio, setBio] = useState('');
-
-  // Collaborator Fields:
-  const [name, setName] = useState('');
-  const [collaboratorImage, setCollaboratorImage] = useState(null);
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [remote, setRemote] = useState(false);
-
-  // Universal Fields:
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  // Errors:
   const [errors, setErrors] = useState([]);
 
-  // Navigation:
   const navigate = useNavigate();
 
-  // Functions:
   function athleteSignUp(e) {
     e.preventDefault();
-    const athlete = {
-      first_name: firstName,
-      last_name: lastName,
-      image: athleteImage,
-      university: university,
-      sport: sport,
-      year: year,
-      birthday: birthday,
-      gender: gender,
-      bio: bio,
-      email: email,
-      phone_number: phoneNumber,
-      username: username,
-      password: password,
-      athlete: true,
-    };
+    let athleteData = new FormData();
+    athleteData.append('athlete[first_name]', e.target.first_name.value);
+    athleteData.append('athlete[last_name]', e.target.last_name.value);
+    athleteData.append(
+      'athlete[image]',
+      e.target.image.files[0],
+      e.target.image.value
+    );
+    athleteData.append('athlete[university]', e.target.university.value);
+    athleteData.append('athlete[sport]', e.target.sport.value);
+    athleteData.append('athlete[year]', e.target.year.value);
+    athleteData.append('athlete[birthday]', e.target.birthday.value);
+    athleteData.append('athlete[gender]', e.target.gender.value);
+    athleteData.append('athlete[biography]', e.target.biography.value);
+    athleteData.append('athlete[email]', e.target.email.value);
+    athleteData.append('athlete[phone_number]', e.target.phone_number.value);
+    athleteData.append('athlete[username]', e.target.username.value);
+    athleteData.append('athlete[password]', e.target.password.value);
+    athleteData.append('athlete[athlete]', true);
     fetch('/athletes', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(athlete),
+      body: athleteData,
     }).then((res) => {
       if (res.ok) {
         res.json().then(setCurrentUser);
@@ -76,22 +49,26 @@ function SignUp({ setCurrentUser }) {
 
   function collaboratorSignUp(e) {
     e.preventDefault();
-    const collaborator = {
-      name: name,
-      image: collaboratorImage,
-      address: address,
-      city: city,
-      state: state,
-      remote: remote,
-      email: email,
-      phone_number: phoneNumber,
-      username: username,
-      password: password,
-    };
+    let collaboratorData = new FormData();
+    // console.log(e.target.remote);
+    collaboratorData.append('collaborator[name]', e.target.name.value);
+    collaboratorData.append(
+      'collaborator[image]',
+      e.target.image.files[0],
+      e.target.image.value
+    );
+    collaboratorData.append('collaborator[address]', e.target.address.value);
+    collaboratorData.append('collaborator[remote]', e.target.remote.value);
+    collaboratorData.append('collaborator[email]', e.target.email.value);
+    collaboratorData.append(
+      'collaborator[phone_number]',
+      e.target.phone_number.value
+    );
+    collaboratorData.append('collaborator[username]', e.target.username.value);
+    collaboratorData.append('collaborator[password]', e.target.password.value);
     fetch('/collaborators', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(collaborator),
+      body: collaboratorData,
     }).then((res) => {
       if (res.ok) {
         res.json().then(setCurrentUser);
@@ -123,46 +100,27 @@ function SignUp({ setCurrentUser }) {
           <br />
           <Form.Group className="mb-3 half-left">
             <Form.Label>First Name*</Form.Label>
-            <Form.Control
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
+            <Form.Control placeholder="First Name" name="first_name" />
           </Form.Group>
           <Form.Group className="mb-3 half-right">
             <Form.Label>Last Name*</Form.Label>
-            <Form.Control
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
+            <Form.Control placeholder="Last Name" name="last_name" />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Image</Form.Label>
-            <Form.Control
-              type="file"
-              onChange={(e) => setAthleteImage(e.target.files[0])}
-            />
+            <Form.Control type="file" name="image" />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>University*</Form.Label>
-            <Form.Control
-              placeholder="University"
-              value={university}
-              onChange={(e) => setUniversity(e.target.value)}
-            />
+            <Form.Control placeholder="University" name="university" />
           </Form.Group>
           <Form.Group className="mb-3 half-left">
             <Form.Label>Sport*</Form.Label>
-            <Form.Control
-              placeholder="Sport"
-              value={sport}
-              onChange={(e) => setSport(e.target.value)}
-            />
+            <Form.Control placeholder="Sport" name="sport" id="sport" />
           </Form.Group>
           <Form.Group className="mb-3 half-right">
             <Form.Label>Year</Form.Label>
-            <Form.Select value={year} onChange={(e) => setYear(e.target.value)}>
+            <Form.Select name="year">
               <option></option>
               <option value="Freshman">Freshman</option>
               <option value="Sophomore">Sophomore</option>
@@ -174,20 +132,11 @@ function SignUp({ setCurrentUser }) {
           </Form.Group>
           <Form.Group className="mb-3 half-left">
             <Form.Label>Birthday</Form.Label>
-            <Form.Control
-              type="date"
-              placeholder="Birthday"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-            />
+            <Form.Control type="date" placeholder="Birthday" name="birthday" />
           </Form.Group>
           <Form.Group className="mb-3 half-right">
             <Form.Label>Gender</Form.Label>
-            <Form.Select
-              placeholder="Gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-            >
+            <Form.Select placeholder="Gender" name="gender">
               <option></option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -200,49 +149,34 @@ function SignUp({ setCurrentUser }) {
               as="textarea"
               rows={3}
               placeholder="Tell us about yourself..."
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
+              name="biography"
             />
           </Form.Group>
           <Form.Group className="mb-3 half-left">
             <Form.Label>Email</Form.Label>
-            <Form.Control
-              placeholder="mail@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Form.Control placeholder="mail@example.com" name="email" />
           </Form.Group>
           <Form.Group className="mb-3 half-right">
             <Form.Label>Phone Number</Form.Label>
-            <Form.Control
-              placeholder="Phone Number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+            <Form.Control placeholder="Phone Number" name="phone_number" />
           </Form.Group>
           <br />
           <hr className="solid"></hr>
           <br />
           <Form.Group className="mb-3">
             <Form.Label>Username*</Form.Label>
-            <Form.Control
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+            <Form.Control placeholder="Username" name="username" />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Password*</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
             />
             <Form.Text muted>
-              Your password must be 8-20 characters long, contain letters and
-              numbers, and must not contain spaces, special characters, or
-              emoji.
+              *must be atleast 8 characters and contain: one uppercase letter,
+              one lowercase letter, one number, & one symbol
             </Form.Text>
             <br />
             <br />
@@ -285,85 +219,46 @@ function SignUp({ setCurrentUser }) {
           <br />
           <Form.Group className="mb-3">
             <Form.Label>Name*</Form.Label>
-            <Form.Control
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <Form.Control placeholder="Name" name="name" />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Image</Form.Label>
-            <Form.Control
-              type="file"
-              onChange={(e) => setCollaboratorImage(e.target.files[0])}
-            />
+            <Form.Control type="file" name="image" />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Address*</Form.Label>
-            <Form.Control
-              placeholder="Address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 half-left">
-            <Form.Label>City*</Form.Label>
-            <Form.Control
-              placeholder="City"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 half-right">
-            <Form.Label>State*</Form.Label>
-            <Form.Control
-              placeholder="State"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-            />
+            <Form.Control placeholder="Address" name="address" />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Remote</Form.Label>
             <Form.Check
               type="switch"
-              value={remote}
-              onChange={(e) => setRemote(!remote)}
+              name="remote"
+              // value={false}
+              // onChange={(e) => !value}
             />
           </Form.Group>
           <Form.Group className="mb-3 half-left">
             <Form.Label>Email</Form.Label>
-            <Form.Control
-              placeholder="mail@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Form.Control placeholder="mail@example.com" name="email" />
           </Form.Group>
           <Form.Group className="mb-3 half-right">
             <Form.Label>Phone Number</Form.Label>
-            <Form.Control
-              placeholder="Phone Number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+            <Form.Control placeholder="Phone Number" name="phone_number" />
           </Form.Group>
           <br />
           <hr className="solid"></hr>
           <br />
           <Form.Group className="mb-3">
             <Form.Label>Username*</Form.Label>
-            <Form.Control
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+            <Form.Control placeholder="Username" name="username" />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Password*</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
             />
             <Form.Text muted>
               Your password must be 8-20 characters long, contain letters and

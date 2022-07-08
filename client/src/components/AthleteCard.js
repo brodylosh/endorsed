@@ -18,13 +18,18 @@ function AthleteCard({ currentUser, athlete }) {
     sport,
     year,
     bio,
-    image,
+    image_url,
   } = athlete;
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <br />
-      <CardMedia component="img" height="140" src={image} alt="User Avatar" />
+      <CardMedia
+        component="img"
+        height="140"
+        src={image_url}
+        alt="User Avatar"
+      />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {first_name + ' ' + last_name}

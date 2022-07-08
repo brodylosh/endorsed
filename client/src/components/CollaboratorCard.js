@@ -10,7 +10,7 @@ import { Button, Modal } from 'react-bootstrap';
 function CollaboratorCard({ currentUser, collaborator }) {
   const [show, setShow] = useState(false);
 
-  const { name, address, remote } = collaborator;
+  const { name, image_url, address, remote } = collaborator;
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -18,8 +18,7 @@ function CollaboratorCard({ currentUser, collaborator }) {
       <CardMedia
         component="img"
         height="140"
-        src="https://cdn.hashnode.com/res/hashnode/image/upload/v1651857656900/jS_2jvtVJ.jpg"
-        // image="/static/images/cards/contemplative-reptile.jpg"
+        src={image_url}
         alt="User Avatar"
       />
       <CardContent>

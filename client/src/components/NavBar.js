@@ -137,7 +137,7 @@ function NavBar({ currentUser, setCurrentUser }) {
             <Box sx={{ flexGrow: 0, display: { marginRight: '5rem' } }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src={currentUser.image} />
+                  <Avatar alt="Remy Sharp" src={currentUser.image_url} />
                 </IconButton>
               </Tooltip>
               <Menu
