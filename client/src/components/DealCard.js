@@ -16,6 +16,7 @@ function DealCard({ currentUser, deal }) {
     expiration_date,
     location,
     completed,
+    collaborator,
   } = deal;
 
   return (
@@ -25,6 +26,10 @@ function DealCard({ currentUser, deal }) {
         <Card.Title>{description}</Card.Title>
         <Card.Text>Offer: ${offer}</Card.Text>
         <Card.Text>Expires: {expiration_date}</Card.Text>
+        {/* <Card.Img
+          src={collaborator.image_url ? collaborator.image_url : null}
+          src="https://s3-media0.fl.yelpcdn.com/bphoto/Z69ukh7OEL9tB31ztxOQSw/348s.jpg"
+        ></Card.Img> */}
         {currentUser && currentUser.athlete ? (
           <Button size="small" variant="success">
             Apply

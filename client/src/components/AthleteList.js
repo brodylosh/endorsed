@@ -1,8 +1,31 @@
-import { Container, Row } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Container, Row, Spinner } from 'react-bootstrap';
 import AthleteCard from './AthleteCard';
+import SearchSort from './SearchSort';
 
-function AthleteList({ currentUser, athleteList }) {
-  let renderAthletes = athleteList.map((athlete) => {
+function AthleteList({ currentUser }) {
+  const [athleteList, setAthleteList] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    fetch('/athletes')
+      .then((resp) => resp.json())
+      .then((data) => {
+        setIsLoading(false);
+        setAthleteList(data);
+      });
+  }, [currentUser]);
+
+  let filteredAthletes = athleteList.filter(
+    (athlete) =>
+      athlete.first_name.toLowerCase().includes(search.toLowerCase()) ||
+      athlete.last_name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  let renderAthletes = filteredAthletes.map((athlete) => {
     return (
       <AthleteCard
         className="cards"
@@ -14,12 +37,19 @@ function AthleteList({ currentUser, athleteList }) {
   });
 
   return (
-    <div className="list">
+    <>
+      <br />
+      <SearchSort setSearch={setSearch} />
+      <br />
       <br />
       <Container>
-        <Row>{renderAthletes}</Row>
+        {isLoading ? (
+          <Spinner animation="border" />
+        ) : (
+          <Row className="g-4">{renderAthletes}</Row>
+        )}
       </Container>
-    </div>
+    </>
   );
 }
 

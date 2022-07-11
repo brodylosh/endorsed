@@ -13,7 +13,7 @@ function SignUp({ setCurrentUser }) {
 
   function athleteSignUp(e) {
     e.preventDefault();
-    let athleteData = new FormData();
+    const athleteData = new FormData();
     athleteData.append('athlete[first_name]', e.target.first_name.value);
     athleteData.append('athlete[last_name]', e.target.last_name.value);
     athleteData.append(
@@ -49,8 +49,7 @@ function SignUp({ setCurrentUser }) {
 
   function collaboratorSignUp(e) {
     e.preventDefault();
-    let collaboratorData = new FormData();
-    // console.log(e.target.remote);
+    const collaboratorData = new FormData();
     collaboratorData.append('collaborator[name]', e.target.name.value);
     collaboratorData.append(
       'collaborator[image]',

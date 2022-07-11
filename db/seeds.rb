@@ -25,10 +25,10 @@ end
 
 #Deals
 
-Deal.create(collaborator_id: 1, athlete_id: 1, title: 'Autographs at Ricks', offer: 150, description: 'Seeking a male MSU basketball student-athlete to provide autographs at Ricks for 1 hour', criteria: 'Male, Michigan State University, Basketball player', university: 'Michigan State University', sport: 'Basketball', year: '', age: '', gender: 'Male', expiration_date: Faker::Date.forward(days: 10), location: '224 Abbot Rd, East Lansing, MI 48823', completed: false)
+Deal.create(collaborator_id: 1, athlete_id: 1, title: 'Autographs at Ricks', offer: 150, description: 'Seeking a male MSU basketball student-athlete to provide autographs at Ricks for 1 hour', university: 'Michigan State University', sport: 'Basketball', year: '', age: '', gender: 'Male', expiration_date: Faker::Date.forward(days: 10), location: '224 Abbot Rd, East Lansing, MI 48823', completed: false)
 
 30.times do
-    Deal.create(collaborator_id: Faker::Number.between(from: 1, to: 30), athlete_id: Faker::Number.between(from: 1, to: 50), title: Faker::Lorem.sentence, offer: Faker::Number.between(from: 1, to: 1000), description: Faker::Lorem.paragraph(sentence_count: 2), criteria: Faker::Lorem.paragraph(sentence_count: 2), university: Faker::University.name, sport: sports.sample, year: year.sample, age: Faker::Number.between(from: 1, to: 30), gender: gender.sample, expiration_date: Faker::Date.between(from: 2.week.from_now, to: 7.week.from_now), location: Faker::Address.full_address, completed: false)
+    Deal.create(collaborator_id: Faker::Number.between(from: 1, to: 30), athlete_id: Faker::Number.between(from: 1, to: 50), title: Faker::Lorem.sentence, offer: Faker::Number.between(from: 1, to: 1000), description: Faker::Lorem.paragraph(sentence_count: 2), university: Faker::University.name, sport: sports.sample, year: year.sample, age: Faker::Number.between(from: 1, to: 30), gender: gender.sample, expiration_date: Faker::Date.between(from: 2.week.from_now, to: 7.week.from_now), location: Faker::Address.full_address, completed: false)
 end
 
 #Applications

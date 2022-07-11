@@ -10,7 +10,10 @@ function Footer() {
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
-        style={{ backgroundColor: 'white', color: '#454545' }}
+        style={{
+          backgroundColor: 'white',
+          color: '#454545',
+        }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={2}>
@@ -42,13 +45,9 @@ function Footer() {
               </Button>
             </Grid>
           </Grid>
-          <Box
-            textAlign="center"
-            fontFamily="bindhu"
-            pt={{ xs: 5, sm: 10 }}
-            pb={{ xs: 5, sm: 0 }}
-          >
-            endorsed&reg; {new Date().getFullYear()}
+          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
+            <span className="logo-text">endorsed</span>
+            <sup> &reg; {new Date().getFullYear()}</sup>
           </Box>
         </Container>
       </Box>

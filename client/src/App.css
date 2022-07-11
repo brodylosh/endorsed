@@ -37,6 +37,23 @@
   float: right;
 }
 
+.sort {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.search {
+  width: 25%;
+  margin-right: 10%;
+  display: inline-block;
+  text-align: right;
+}
+
+.search-sort {
+  width: 100%;
+  text-align: right;
+}
+
 .solid {
     border-top: 3px solid #bbb;
     width: 94%;
@@ -52,5 +69,17 @@
   text-align: center;
   margin: auto;
   width: 100%;
+}
+
+.logo-text {
+  font-family: 'bindhu';
+}
+
+.athlete-card-buttons {
+  margin: auto;
+}
+
+.modal {
+  z-index: 10000;
 }
 

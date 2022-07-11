@@ -6,7 +6,6 @@ class CreateDeals < ActiveRecord::Migration[7.0]
       t.string :title
       t.integer :offer
       t.string :description
-      t.string :criteria
       t.string :university
       t.string :sport
       t.string :year

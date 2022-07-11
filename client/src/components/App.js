@@ -7,14 +7,6 @@ import Footer from './Footer';
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  if (currentUser && currentUser.athlete) {
-    console.log('athlete');
-  } else if (currentUser && !currentUser.athlete) {
-    console.log('collaborator');
-  } else {
-    console.log('no user');
-  }
-
   useEffect(() => {
     fetch('/me').then((resp) => {
       if (resp.ok) {
