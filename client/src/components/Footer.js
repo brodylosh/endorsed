@@ -13,6 +13,8 @@ function Footer() {
         style={{
           backgroundColor: 'white',
           color: '#454545',
+          paddingTop: '40px',
+          paddingBottom: '5px',
         }}
       >
         <Container maxWidth="lg">
@@ -45,7 +47,14 @@ function Footer() {
               </Button>
             </Grid>
           </Grid>
-          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
+          <Box
+            textAlign="center"
+            pt={{ xs: 5, sm: 10 }}
+            pb={{ xs: 5, sm: 0 }}
+            style={{
+              padding: '25px',
+            }}
+          >
             <span className="logo-text">endorsed</span>
             <sup> &reg; {new Date().getFullYear()}</sup>
           </Box>

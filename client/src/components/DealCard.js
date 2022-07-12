@@ -19,19 +19,32 @@ function DealCard({ currentUser, deal }) {
     collaborator,
   } = deal;
 
+  // function getDate() {
+  //   let today = new Date();
+  //   let Difference_In_Time = expiration_date.getTime() - today.getTime();
+  //   let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+  //   return Difference_In_Days;
+  // }
+
   return (
     <Card className="deal-card">
       <Card.Header>{title}</Card.Header>
       <Card.Body>
         <Card.Title>{description}</Card.Title>
-        <Card.Text>Offer: ${offer}</Card.Text>
+        <Card.Text>{collaborator.name}</Card.Text>
+        <Card.Text className="green">Offer: ${offer}</Card.Text>
         <Card.Text>Expires: {expiration_date}</Card.Text>
-        {/* <Card.Img
-          src={collaborator.image_url ? collaborator.image_url : null}
-          src="https://s3-media0.fl.yelpcdn.com/bphoto/Z69ukh7OEL9tB31ztxOQSw/348s.jpg"
-        ></Card.Img> */}
+        <Card.Img
+          src={
+            collaborator.image_url
+              ? collaborator.image_url
+              : 'https://www.zimplaza.co.zw/wp-content/uploads/placeholdercompany5f3438282f524800f1d49cd2921bb0a56101e1aa16097ebd313b64778fc7c4bd1611448792.png'
+          }
+          // src="https://s3-media0.fl.yelpcdn.com/bphoto/Z69ukh7OEL9tB31ztxOQSw/348s.jpg"
+          className="deal-card-image"
+        ></Card.Img>
         {currentUser && currentUser.athlete ? (
-          <Button size="small" variant="success">
+          <Button size="small" variant="success" className="apply">
             Apply
           </Button>
         ) : null}

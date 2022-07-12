@@ -27,6 +27,14 @@ function DealList({ currentUser }) {
     return <DealCard currentUser={currentUser} key={deal.id} deal={deal} />;
   });
 
+  // let renderDeals = filteredDeals.map((deal) => {
+  //   if (deal.athlete_id) {
+  //     return null;
+  //   } else {
+  //     return <DealCard currentUser={currentUser} key={deal.id} deal={deal} />;
+  //   }
+  // });
+
   return (
     <>
       <br />

@@ -75,11 +75,65 @@
   font-family: 'bindhu';
 }
 
-.athlete-card-buttons {
-  margin: auto;
+.card-buttons {
+  display: flex;
+  justify-content: center;
 }
 
 .modal {
-  z-index: 10000;
+  z-index: 10000; 
 }
 
+.modal-dialog {
+  max-width: 90%;
+}
+
+.modal-body {
+  display: flex;
+}
+
+.modal-image {
+  width: 50%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: flex;
+  float: left;
+}
+
+.modal-info {
+  float: right;
+  width: 50%;
+  margin-left: 5%;
+  top: 50%
+}
+
+.page-title {
+  display: flex;
+  float: left;
+  margin-left: 5%;
+  font-family: 'bindhu';
+}
+
+.apply {
+  margin-right: 1%;
+}
+
+.contact {
+  width: 40%;
+}
+
+.contact-info {
+  display: block;
+}
+
+.deal-card-image {
+  width: 100px;
+  border-radius: 50%;
+  height: auto;
+  display: flex;
+  float: right;
+}
+
+.green {
+  color: #198753;
+}

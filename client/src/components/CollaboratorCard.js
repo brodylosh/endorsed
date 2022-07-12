@@ -5,12 +5,14 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Col, Button, Modal } from 'react-bootstrap';
+import { Col, Button, Modal, Container, Row, Image } from 'react-bootstrap';
 
 function CollaboratorCard({ currentUser, collaborator }) {
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
 
-  const { name, image_url, address, remote } = collaborator;
+  const { name, image_url, address, remote, email, phone_number, athletes } =
+    collaborator;
 
   return (
     <Col xs={12} s={8} md={6} lg={3}>
@@ -40,20 +42,41 @@ function CollaboratorCard({ currentUser, collaborator }) {
             </Typography>
           )}
         </CardContent>
-        <CardActions>
-          <Button size="small" variant="success">
+        <CardActions className="card-buttons">
+          <Button size="small" variant="success" onClick={() => setShow(true)}>
             Contact
           </Button>
           <Button
             size="small"
             variant="outline-success"
-            onClick={() => setShow(true)}
+            onClick={() => setShow2(true)}
           >
             View
           </Button>
           <Modal
             show={show}
             onHide={() => setShow(false)}
+            dialogClassName="contact"
+            aria-labelledby="example-custom-modal-styling-title"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="example-custom-modal-styling-title">
+                {name}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="contact-info">
+              <p>
+                <b>Email: </b> <a href="mailto:email">{email}</a>
+              </p>
+              <p>
+                <b>Phone Number: </b>
+                <a href="tel:+123456789">{phone_number}</a>
+              </p>
+            </Modal.Body>
+          </Modal>
+          <Modal
+            show={show2}
+            onHide={() => setShow2(false)}
             dialogClassName="modal-90w"
             aria-labelledby="example-custom-modal-styling-title"
           >
@@ -62,9 +85,33 @@ function CollaboratorCard({ currentUser, collaborator }) {
                 {name}
               </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <p>lorem ipsom</p>
+            <Modal.Body className="modal-body">
+              <Image className="modal-image" src={image_url} />
+              <Container className="modal-info">
+                <Row>
+                  <Col>
+                    {remote ? <h3>Remote Business</h3> : <h3>{address}</h3>}
+                    <br />
+                  </Col>
+                </Row>
+                <Row>
+                  <h5>Athletes: </h5>
+                  <br />
+                  <p>
+                    {athletes.map(
+                      (athlete) => athlete.first_name + ' ' + athlete.last_name
+                    )}
+                  </p>
+                </Row>
+              </Container>
             </Modal.Body>
+            <Container>
+              <br />
+              <hr className="solid"></hr>
+              <br />
+              <h1>Deals:</h1>
+              {}
+            </Container>
           </Modal>
         </CardActions>
       </Card>

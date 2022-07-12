@@ -1,9 +1,12 @@
-import { useState } from 'react';
+// import { useLocation } from 'react';
 import { Form, Dropdown } from 'react-bootstrap';
 
 function SearchSort({ setSearch }) {
+  // let location = useLocation();
+
   return (
     <Form className="search-sort">
+      {/* <h1 className="page-title">athletes</h1> */}
       <Dropdown className="sort">
         <Dropdown.Toggle variant="success">Sort By:</Dropdown.Toggle>
         <Dropdown.Menu>
