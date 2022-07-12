@@ -1,12 +1,17 @@
-// import { useLocation } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Form, Dropdown } from 'react-bootstrap';
 
-function SearchSort({ setSearch }) {
-  // let location = useLocation();
+function SearchSort({ setSearch, setSort }) {
+  let location = useLocation();
 
   return (
     <Form className="search-sort">
-      {/* <h1 className="page-title">athletes</h1> */}
+      {/* {if (location.pathName === '/athletes') {
+       return <h1 className="page-title">athletes</h1>} else if (location.pathName === '/deals') {
+        return <h1 className="page-title">deals</h1>
+       } else if (location.pathName === '/collaborators' {
+        return <h1 className="page-title">collaborators</h1>
+       }} */}
       <Dropdown className="sort">
         <Dropdown.Toggle variant="success">Sort By:</Dropdown.Toggle>
         <Dropdown.Menu>

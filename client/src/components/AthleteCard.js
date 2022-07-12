@@ -14,10 +14,11 @@ function AthleteCard({ athlete }) {
   const {
     first_name,
     last_name,
-    birthday,
     university,
     sport,
     year,
+    birthday,
+    gender,
     bio,
     image_url,
     email,
@@ -25,6 +26,26 @@ function AthleteCard({ athlete }) {
     collaborators,
     deals,
   } = athlete;
+
+  let renderDeals = deals.map((deal) => {
+    return (
+      <Card className="deal-card">
+        <Card.Header>{deal.title}</Card.Header>
+        <Card.Body>
+          <Card.Title>{deal.description}</Card.Title>
+          <Card.Text>{deal.collaborator.name}</Card.Text>
+          <Card.Img
+            src={
+              deal.collaborator.image_url
+                ? deal.collaborator.image_url
+                : 'https://www.zimplaza.co.zw/wp-content/uploads/placeholdercompany5f3438282f524800f1d49cd2921bb0a56101e1aa16097ebd313b64778fc7c4bd1611448792.png'
+            }
+            className="deal-card-image"
+          ></Card.Img>
+        </Card.Body>
+      </Card>
+    );
+  });
 
   function getAge(dateString) {
     let today = new Date();
@@ -119,9 +140,9 @@ function AthleteCard({ athlete }) {
                 </Row>
                 <Row>
                   <Col>
-                    <h3>
-                      {sport} | {year}
-                    </h3>
+                    <h4>
+                      {gender} | {sport} | {year}
+                    </h4>
                   </Col>
                 </Row>
                 <Row>
@@ -138,7 +159,9 @@ function AthleteCard({ athlete }) {
                   <h5>Collaborators: </h5>
                   <br />
                   <p>
-                    {collaborators.map((collaborator) => collaborator.name)}
+                    {deals.map((deal) =>
+                      deal.completed ? deal.collaborator.name : null
+                    )}
                   </p>
                 </Row>
               </Container>
@@ -148,7 +171,7 @@ function AthleteCard({ athlete }) {
               <hr className="solid"></hr>
               <br />
               <h1>Deals:</h1>
-              {}
+              {renderDeals}
             </Container>
           </Modal>
         </CardActions>

@@ -9,6 +9,7 @@ function AthleteList({ currentUser }) {
   const [isLoading, setIsLoading] = useState(true);
 
   const [search, setSearch] = useState('');
+  const [sort, setSort] = useState('');
 
   useEffect(() => {
     fetch('/athletes')
@@ -39,7 +40,7 @@ function AthleteList({ currentUser }) {
   return (
     <>
       <br />
-      <SearchSort setSearch={setSearch} />
+      <SearchSort setSearch={setSearch} setSort={setSort} />
       <br />
       <br />
       <Container>

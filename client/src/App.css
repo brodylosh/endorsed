@@ -127,7 +127,7 @@
 }
 
 .deal-card-image {
-  width: 100px;
+  width: 50px;
   border-radius: 50%;
   height: auto;
   display: flex;
@@ -136,4 +136,12 @@
 
 .green {
   color: #198753;
+}
+
+.card {
+  color: #2f2f2f;
+}
+
+.form-label {
+  display: block;
 }

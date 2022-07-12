@@ -1,4 +1,5 @@
-import { useState, useNavigate } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, InputGroup, FormControl, Button } from 'react-bootstrap';
 
 function CreateDealForm({ currentUser }) {
@@ -16,7 +17,7 @@ function CreateDealForm({ currentUser }) {
 
   const [errors, setErrors] = useState([]);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function createDeal(e) {
     e.preventDefault();
@@ -42,10 +43,10 @@ function CreateDealForm({ currentUser }) {
       body: JSON.stringify(deal),
     }).then((res) => {
       if (res.ok) {
-        console.log(res);
-        // navigate('/deals');
+        navigate('/deals');
       } else {
         res.json().then((data) => {
+          console.log(data.errors);
           setErrors(data.errors);
         });
       }
@@ -53,7 +54,7 @@ function CreateDealForm({ currentUser }) {
   }
 
   return (
-    <Form className="rounded p-4 p-sm-3 form">
+    <Form className="rounded p-4 p-sm-3 form" onSubmit={createDeal}>
       <h1>Create Deal</h1>
       <br />
       <Form.Group className="mb-3">
@@ -74,8 +75,8 @@ function CreateDealForm({ currentUser }) {
           onChange={(e) => setDescription(e.target.value)}
         />
       </Form.Group>
-      {/* <Form.Label className="mb-3 half-left">Offer</Form.Label> */}
       <InputGroup className="mb-3 half-left">
+        <Form.Label>Offer</Form.Label>
         <InputGroup.Text>$</InputGroup.Text>
         <FormControl
           placeholder="0"
@@ -160,9 +161,9 @@ function CreateDealForm({ currentUser }) {
           onChange={(e) => setLocation(e.target.value)}
         />
       </Form.Group>
-      {/* {errors.map((error) => {
+      {errors.map((error) => {
         return <p>{error}</p>;
-      })} */}
+      })}
       <Button variant="success" type="submit">
         Create Deal
       </Button>

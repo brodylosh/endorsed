@@ -2,10 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Switch from '@mui/material/Switch';
 import { Form, Button } from 'react-bootstrap';
 
 function SignUp({ setCurrentUser }) {
   const [userType, setUserType] = useState('athlete');
+
+  const [isToggled, setIsToggled] = useState(false);
 
   const [errors, setErrors] = useState([]);
 
@@ -26,7 +29,7 @@ function SignUp({ setCurrentUser }) {
     athleteData.append('athlete[year]', e.target.year.value);
     athleteData.append('athlete[birthday]', e.target.birthday.value);
     athleteData.append('athlete[gender]', e.target.gender.value);
-    athleteData.append('athlete[biography]', e.target.biography.value);
+    athleteData.append('athlete[bio]', e.target.biography.value);
     athleteData.append('athlete[email]', e.target.email.value);
     athleteData.append('athlete[phone_number]', e.target.phone_number.value);
     athleteData.append('athlete[username]', e.target.username.value);
@@ -57,7 +60,7 @@ function SignUp({ setCurrentUser }) {
       e.target.image.value
     );
     collaboratorData.append('collaborator[address]', e.target.address.value);
-    collaboratorData.append('collaborator[remote]', e.target.remote.value);
+    collaboratorData.append('collaborator[remote]', isToggled);
     collaboratorData.append('collaborator[email]', e.target.email.value);
     collaboratorData.append(
       'collaborator[phone_number]',
@@ -230,13 +233,19 @@ function SignUp({ setCurrentUser }) {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Remote</Form.Label>
-            <Form.Check
+            <Switch
+              color="success"
+              value={isToggled}
+              onChange={(e) => setIsToggled(!isToggled)}
+            />
+            {/* <Form.Check
+              color="sucess"
               type="switch"
               name="remote"
-              defaultChecked="false"
-              // value={false}
-              onChange={(e) => console.log(e.target.value)}
-            />
+              disabled
+              value={isToggled}
+              onChange={(e) => setIsToggled(!isToggled)}
+            /> */}
           </Form.Group>
           <Form.Group className="mb-3 half-left">
             <Form.Label>Email</Form.Label>

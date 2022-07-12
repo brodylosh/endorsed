@@ -7,6 +7,7 @@ class Athlete < ApplicationRecord
         Rails.application.routes.url_helpers.url_for(image) if image.attached?
     end
 
+    # has_many :deals
     has_many :applications
     has_many :deals, through: :applications 
     has_many :collaborators, through: :deals

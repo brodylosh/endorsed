@@ -32,18 +32,18 @@ function Home({ currentUser }) {
       <Container>
         <Row xs={2} md={3} className="g-4">
           <Col>
-            <Card>
+            <Card className="card">
               <Card.Img
                 variant="top"
                 src="https://www.gannett-cdn.com/presto/2021/09/26/PLSJ/62f86f5f-0e87-4c83-97f8-c20db15bf445-210925_msu_nebraska_146a.JPG"
-                style={{ width: 'auto', height: 300 }}
+                style={{ width: 'auto', height: 300, opacity: '.6' }}
               />
               <Card.Body>
                 <Card.Title>Athletes</Card.Title>
                 <Card.Text>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Football players to swimmers, graduate students to recruits,
+                  endorsed® graciously welcomes all of our student-athlete
+                  partners!
                 </Card.Text>
                 <Link to="/athletes">
                   <Button variant="success">View Athletes</Button>
@@ -56,14 +56,13 @@ function Home({ currentUser }) {
               <Card.Img
                 variant="top"
                 src="https://nypost.com/wp-content/uploads/sites/2/2022/06/cj-stroud-gwagon-nil-deal-01.jpg"
-                style={{ width: 'auto', height: 300 }}
+                style={{ width: 'auto', height: 300, opacity: '.6' }}
               />
               <Card.Body>
                 <Card.Title>Deals</Card.Title>
                 <Card.Text>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Check out our deals marketplace. Where athletes meet
+                  collaborators, and deals turn to cash!! Get endorsed®!
                 </Card.Text>
                 <Link to="/deals">
                   <Button variant="success">View Deals</Button>
@@ -76,14 +75,14 @@ function Home({ currentUser }) {
               <Card.Img
                 variant="top"
                 src="https://apksshare.com/wp-content/uploads/2021/06/Mercedes-me-APK-MOD-Download-1.12.0.png"
-                style={{ width: 'auto', height: 300 }}
+                style={{ width: 'auto', height: 300, opacity: '.6' }}
               />
               <Card.Body>
                 <Card.Title>Collaborators</Card.Title>
                 <Card.Text>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Global brands and local busineeses rely on endorsed® to
+                  faciliate brand deals, in order to take their business to the
+                  next level!
                 </Card.Text>
                 <Link to="/collaborators">
                   <Button variant="success">View Collaborators</Button>
