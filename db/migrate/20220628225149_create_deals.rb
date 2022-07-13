@@ -6,7 +6,7 @@ class CreateDeals < ActiveRecord::Migration[7.0]
       t.string :title
       t.integer :offer
       t.string :description
-      t.string :university
+      t.string :school
       t.string :sport
       t.string :year
       t.integer :age
@@ -14,7 +14,6 @@ class CreateDeals < ActiveRecord::Migration[7.0]
       t.date :expiration_date
       t.string :location
       t.boolean :completed
-      t.integer :application_id
 
       t.timestamps
     end

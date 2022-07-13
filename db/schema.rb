@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
   create_table "athletes", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "university"
+    t.string "school"
     t.string "sport"
     t.string "year"
     t.date "birthday"
@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
     t.string "title"
     t.integer "offer"
     t.string "description"
-    t.string "university"
+    t.string "school"
     t.string "sport"
     t.string "year"
     t.integer "age"
@@ -93,7 +93,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_172424) do
     t.date "expiration_date"
     t.string "location"
     t.boolean "completed"
-    t.integer "application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

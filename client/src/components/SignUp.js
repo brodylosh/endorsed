@@ -24,7 +24,7 @@ function SignUp({ setCurrentUser }) {
       e.target.image.files[0],
       e.target.image.value
     );
-    athleteData.append('athlete[university]', e.target.university.value);
+    athleteData.append('athlete[school]', e.target.school.value);
     athleteData.append('athlete[sport]', e.target.sport.value);
     athleteData.append('athlete[year]', e.target.year.value);
     athleteData.append('athlete[birthday]', e.target.birthday.value);
@@ -113,8 +113,8 @@ function SignUp({ setCurrentUser }) {
             <Form.Control type="file" name="image" />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>University*</Form.Label>
-            <Form.Control placeholder="University" name="university" />
+            <Form.Label>School*</Form.Label>
+            <Form.Control placeholder="School" name="school" />
           </Form.Group>
           <Form.Group className="mb-3 half-left">
             <Form.Label>Sport*</Form.Label>

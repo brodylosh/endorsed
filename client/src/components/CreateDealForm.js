@@ -8,7 +8,7 @@ function CreateDealForm({ currentUser }) {
   const [offer, setOffer] = useState(null);
   const [expirationDate, setExpirationDate] = useState(null);
   const [athleteId, setAthleteId] = useState(null);
-  const [university, setUniversity] = useState('');
+  const [school, setSchool] = useState('');
   const [sport, setSport] = useState('');
   const [year, setYear] = useState('');
   const [age, setAge] = useState(null);
@@ -27,7 +27,7 @@ function CreateDealForm({ currentUser }) {
       title: title,
       offer: offer,
       description: description,
-      university: university,
+      school: school,
       sport: sport,
       year: year,
       age: age,
@@ -116,11 +116,11 @@ function CreateDealForm({ currentUser }) {
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>University</Form.Label>
+        <Form.Label>School</Form.Label>
         <Form.Control
-          placeholder="University"
-          value={university}
-          onChange={(e) => setUniversity(e.target.value)}
+          placeholder="School"
+          value={school}
+          onChange={(e) => setSchool(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3 half-left">

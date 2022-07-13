@@ -3,7 +3,7 @@ class CreateAthletes < ActiveRecord::Migration[7.0]
     create_table :athletes do |t|
       t.string :first_name
       t.string :last_name
-      t.string :university
+      t.string :school
       t.string :sport
       t.string :year
       t.date :birthday

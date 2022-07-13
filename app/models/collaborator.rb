@@ -8,8 +8,8 @@ class Collaborator < ApplicationRecord
     end
     
     has_many :deals
-    has_many :applications, through: :deals
     has_many :athletes, through: :deals
+    # has_many :applications, through: :deals
 
     # validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
 

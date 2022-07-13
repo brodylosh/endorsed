@@ -9,7 +9,7 @@ function DealCard({ currentUser, deal }) {
     title,
     offer,
     description,
-    university,
+    school,
     sport,
     year,
     age,
@@ -91,15 +91,15 @@ function DealCard({ currentUser, deal }) {
             <p>Location: {location}</p>
             <p>Expires: {expiration_date}</p>
             <br />
-            {university || sport || year || age || gender ? (
+            {school || sport || year || age || gender ? (
               <h5>Athlete Criteria:</h5>
             ) : null}
             <br />
-            {university ? <p>University: {university}</p> : null}
-            {university ? <p>Sport: {sport}</p> : null}
-            {university ? <p>Year: {year}</p> : null}
-            {university ? <p>Age: {age}</p> : null}
-            {university ? <p>Gender: {gender}</p> : null}
+            {school ? <p>School: {school}</p> : null}
+            {sport ? <p>Sport: {sport}</p> : null}
+            {year ? <p>Year: {year}</p> : null}
+            {age ? <p>Age: {age}</p> : null}
+            {gender ? <p>Gender: {gender}</p> : null}
           </Modal.Body>
         </Modal>
       </Card.Body>

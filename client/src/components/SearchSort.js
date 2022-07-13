@@ -14,11 +14,12 @@ function SearchSort({ setSearch, setSort }) {
        }} */}
       <Dropdown className="sort">
         <Dropdown.Toggle variant="success">Sort By:</Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item>Name</Dropdown.Item>
-          <Dropdown.Item>Sport</Dropdown.Item>
-          <Dropdown.Item>University</Dropdown.Item>
-          <Dropdown.Item>Year</Dropdown.Item>
+        <Dropdown.Menu onChange={(e) => console.log('hi')}>
+          <Dropdown.Item value="all">All</Dropdown.Item>
+          <Dropdown.Item value="name">Name</Dropdown.Item>
+          <Dropdown.Item value="sport">Sport</Dropdown.Item>
+          <Dropdown.Item value="school">School</Dropdown.Item>
+          <Dropdown.Item value="year">Year</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Form.Group className="mb-3 search">

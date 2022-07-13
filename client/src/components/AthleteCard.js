@@ -1,11 +1,18 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Col, Button, Modal, Container, Row, Image } from 'react-bootstrap';
+import {
+  Col,
+  Button,
+  Modal,
+  Container,
+  Row,
+  Image,
+  Card,
+} from 'react-bootstrap';
 
 function AthleteCard({ athlete }) {
   const [show, setShow] = useState(false);
@@ -14,7 +21,7 @@ function AthleteCard({ athlete }) {
   const {
     first_name,
     last_name,
-    university,
+    school,
     sport,
     year,
     birthday,
@@ -27,23 +34,36 @@ function AthleteCard({ athlete }) {
     deals,
   } = athlete;
 
+  let renderCollaborators = deals.map((deal) => {
+    let collaborator = collaborators.find(
+      (collaborator) => collaborator.id == deal.collaborator_id
+    );
+    return <li className="li">{collaborator.name}</li>;
+  });
+
   let renderDeals = deals.map((deal) => {
+    let collaborator = collaborators.find(
+      (collaborator) => collaborator.id == deal.collaborator_id
+    );
     return (
-      <Card className="deal-card">
-        <Card.Header>{deal.title}</Card.Header>
-        <Card.Body>
-          <Card.Title>{deal.description}</Card.Title>
-          <Card.Text>{deal.collaborator.name}</Card.Text>
-          <Card.Img
-            src={
-              deal.collaborator.image_url
-                ? deal.collaborator.image_url
-                : 'https://www.zimplaza.co.zw/wp-content/uploads/placeholdercompany5f3438282f524800f1d49cd2921bb0a56101e1aa16097ebd313b64778fc7c4bd1611448792.png'
-            }
-            className="deal-card-image"
-          ></Card.Img>
-        </Card.Body>
-      </Card>
+      <>
+        <Card className="deal-card">
+          <Card.Header>{deal.title}</Card.Header>
+          <Card.Body>
+            <Card.Title>{deal.description}</Card.Title>
+            <Card.Text>{collaborator.name}</Card.Text>
+            <Card.Img
+              src={
+                collaborator.image_url
+                  ? collaborator.image_url
+                  : 'https://www.zimplaza.co.zw/wp-content/uploads/placeholdercompany5f3438282f524800f1d49cd2921bb0a56101e1aa16097ebd313b64778fc7c4bd1611448792.png'
+              }
+              className="deal-card-image"
+            ></Card.Img>
+          </Card.Body>
+        </Card>
+        <br />
+      </>
     );
   });
 
@@ -77,7 +97,7 @@ function AthleteCard({ athlete }) {
             {first_name + ' ' + last_name}
           </Typography>
           <Typography gutterBottom variant="h10" component="div">
-            {university}
+            {school}
           </Typography>
           <Typography gutterBottom variant="h10" component="div">
             {sport}
@@ -135,7 +155,7 @@ function AthleteCard({ athlete }) {
               <Container className="modal-info">
                 <Row>
                   <Col>
-                    <h1>{university}</h1>
+                    <h1>{school}</h1>
                   </Col>
                 </Row>
                 <Row>
@@ -158,11 +178,7 @@ function AthleteCard({ athlete }) {
                 <Row>
                   <h5>Collaborators: </h5>
                   <br />
-                  <p>
-                    {deals.map((deal) =>
-                      deal.completed ? deal.collaborator.name : null
-                    )}
-                  </p>
+                  <ul>{renderCollaborators}</ul>
                 </Row>
               </Container>
             </Modal.Body>

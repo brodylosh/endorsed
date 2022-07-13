@@ -7,10 +7,10 @@ class Athlete < ApplicationRecord
         Rails.application.routes.url_helpers.url_for(image) if image.attached?
     end
 
-    # has_many :deals
-    has_many :applications
-    has_many :deals, through: :applications 
+    has_many :deals
     has_many :collaborators, through: :deals
+    # has_many :applications
+    # has_many :deals, through: :applications 
 
     # validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
 

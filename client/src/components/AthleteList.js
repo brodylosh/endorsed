@@ -9,7 +9,7 @@ function AthleteList({ currentUser }) {
   const [isLoading, setIsLoading] = useState(true);
 
   const [search, setSearch] = useState('');
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState('all');
 
   useEffect(() => {
     fetch('/athletes')
