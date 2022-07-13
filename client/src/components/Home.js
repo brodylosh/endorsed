@@ -36,7 +36,7 @@ function Home({ currentUser }) {
               <Card.Img
                 variant="top"
                 src="https://www.gannett-cdn.com/presto/2021/09/26/PLSJ/62f86f5f-0e87-4c83-97f8-c20db15bf445-210925_msu_nebraska_146a.JPG"
-                style={{ width: 'auto', height: 300, opacity: '.6' }}
+                style={{ width: 'auto', height: 300, opacity: '1' }}
               />
               <Card.Body>
                 <Card.Title>Athletes</Card.Title>
@@ -56,7 +56,7 @@ function Home({ currentUser }) {
               <Card.Img
                 variant="top"
                 src="https://nypost.com/wp-content/uploads/sites/2/2022/06/cj-stroud-gwagon-nil-deal-01.jpg"
-                style={{ width: 'auto', height: 300, opacity: '.6' }}
+                style={{ width: 'auto', height: 300, opacity: '1' }}
               />
               <Card.Body>
                 <Card.Title>Deals</Card.Title>
@@ -75,7 +75,7 @@ function Home({ currentUser }) {
               <Card.Img
                 variant="top"
                 src="https://apksshare.com/wp-content/uploads/2021/06/Mercedes-me-APK-MOD-Download-1.12.0.png"
-                style={{ width: 'auto', height: 300, opacity: '.6' }}
+                style={{ width: 'auto', height: 300, opacity: '1' }}
               />
               <Card.Body>
                 <Card.Title>Collaborators</Card.Title>

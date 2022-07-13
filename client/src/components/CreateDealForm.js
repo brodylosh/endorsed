@@ -76,7 +76,8 @@ function CreateDealForm({ currentUser }) {
         />
       </Form.Group>
       <InputGroup className="mb-3 half-left">
-        <Form.Label>Offer</Form.Label>
+        <Form.Label className="offer">Offer</Form.Label>
+
         <InputGroup.Text>$</InputGroup.Text>
         <FormControl
           placeholder="0"
@@ -93,8 +94,18 @@ function CreateDealForm({ currentUser }) {
           onChange={(e) => setExpirationDate(e.target.value)}
         />
       </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          placeholder="Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+      </Form.Group>
       <br />
       <hr className="solid"></hr>
+      <br />
+      <h5>Optional Athlete Criteria</h5>
       <br />
       <Form.Group className="mb-3">
         <Form.Label>Athlete</Form.Label>
@@ -152,14 +163,6 @@ function CreateDealForm({ currentUser }) {
           <option value="Female">Female</option>
           <option value="Non-Binary">Non-Binary</option>
         </Form.Select>
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Location</Form.Label>
-        <Form.Control
-          placeholder="Location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
       </Form.Group>
       {errors.map((error) => {
         return <p>{error}</p>;

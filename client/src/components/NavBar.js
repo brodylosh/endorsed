@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 const pages = ['Athletes', 'Deals', 'Collaborators'];
-const settings = ['Profile', 'Edit', 'Deals', 'Logout'];
+const settings = ['Edit', 'Deals', 'Logout'];
 
 function NavBar({ currentUser, setCurrentUser }) {
   const [anchorElNav, setAnchorElNav] = useState(null);

@@ -145,3 +145,11 @@
 .form-label {
   display: block;
 }
+
+.offer {
+  width: 100%;
+}
+
+.modal-content {
+  display: block;
+}
