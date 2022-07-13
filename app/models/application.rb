@@ -1,4 +1,4 @@
 class Application < ApplicationRecord
-    # belongs_to :athlete
-    # belongs_to :deal
+    belongs_to :athlete
+    belongs_to :deal
 end

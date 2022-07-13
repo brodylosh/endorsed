@@ -8,7 +8,7 @@ class AthletesController < ApplicationController
 
     def show
         athlete = Athlete.find(params[:id])
-        render json: athlete, status: :ok
+        render json: athlete.deals, status: :ok
     end
 
     def create

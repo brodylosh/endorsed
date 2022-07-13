@@ -34,13 +34,6 @@ function DealCard({ currentUser, deal }) {
     });
   }
 
-  // function getDate() {
-  //   let today = new Date();
-  //   let Difference_In_Time = expiration_date.getTime() - today.getTime();
-  //   let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-  //   return Difference_In_Days;
-  // }
-
   return (
     <Card className="deal-card">
       <Card.Header>{title}</Card.Header>

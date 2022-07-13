@@ -23,17 +23,17 @@ function DealList({ currentUser }) {
     deal.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  // let renderDeals = filteredDeals.map((deal) => {
-  //   return <DealCard currentUser={currentUser} key={deal.id} deal={deal} />;
-  // });
-
   let renderDeals = filteredDeals.map((deal) => {
-    if (deal.athlete_id || deal.applications) {
-      return null;
-    } else {
-      return <DealCard currentUser={currentUser} key={deal.id} deal={deal} />;
-    }
+    return <DealCard currentUser={currentUser} key={deal.id} deal={deal} />;
   });
+
+  // let renderDeals = filteredDeals.map((deal) => {
+  //   if (deal.athlete_id || deal.applications) {
+  //     return null;
+  //   } else {
+  //     return <DealCard currentUser={currentUser} key={deal.id} deal={deal} />;
+  //   }
+  // });
 
   return (
     <>

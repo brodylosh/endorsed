@@ -12,14 +12,28 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Athletes', 'Deals', 'Collaborators'];
-const settings = ['Edit', 'Deals', 'Logout'];
-
 function NavBar({ currentUser, setCurrentUser }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const navigate = useNavigate();
+
+  const pages = ['Athletes', 'Deals', 'Collaborators'];
+  const settings = [{ name: 'Log Out', clickFn: logOut }];
+
+  if (currentUser && currentUser.athlete) {
+    settings.unshift({
+      name: 'Requests',
+      clickFn: () => navigate('/requests'),
+    });
+  }
+
+  if (currentUser && !currentUser.athlete) {
+    settings.unshift({
+      name: 'Applications',
+      clickFn: () => navigate('/applications'),
+    });
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -158,9 +172,9 @@ function NavBar({ currentUser, setCurrentUser }) {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={logOut}>
-                        {setting}
+                    <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={setting.clickFn}>
+                        {setting.name}
                       </Typography>
                     </MenuItem>
                   ))}
@@ -208,9 +222,9 @@ function NavBar({ currentUser, setCurrentUser }) {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={logOut}>
-                        {setting}
+                    <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={setting.clickFn}>
+                        {setting.name}
                       </Typography>
                     </MenuItem>
                   ))}
