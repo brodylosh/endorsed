@@ -8,7 +8,7 @@ class CollaboratorsController < ApplicationController
 
     def show
         collaborator = Collaborator.find(params[:id])
-        render json: collaborator, status: :ok
+        render json: collaborator.deals, status: :ok
     end
 
     def create

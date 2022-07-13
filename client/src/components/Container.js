@@ -7,6 +7,7 @@ import DealList from './DealList';
 import CreateDealForm from './CreateDealForm';
 import CollaboratorList from './CollaboratorList';
 import Requests from './Requests';
+import Applications from './Applications';
 
 function Container({ currentUser, setCurrentUser }) {
   return (
@@ -34,10 +35,18 @@ function Container({ currentUser, setCurrentUser }) {
           path="/collaborators"
           element={<CollaboratorList currentUser={currentUser} />}
         />
-        <Route
-          path="/requests"
-          element={<Requests currentUser={currentUser} />}
-        />
+        {currentUser && currentUser.athlete ? (
+          <Route
+            path="/requests"
+            element={<Requests currentUser={currentUser} />}
+          />
+        ) : null}
+        {currentUser && !currentUser.athlete ? (
+          <Route
+            path="/applications"
+            element={<Applications currentUser={currentUser} />}
+          />
+        ) : null}
       </Routes>
       <br />
     </div>
