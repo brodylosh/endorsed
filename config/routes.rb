@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :applications, only: [:index, :create]
+  resources :applications, only: [:index, :show, :create, :destroy]
   resources :collaborators, only: [:index, :show, :create]
   resources :deals, only: [:index, :show, :create, :update]
   resources :athletes, only: [:index, :show, :create]

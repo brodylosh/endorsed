@@ -15,31 +15,25 @@ function Applications({ currentUser }) {
       });
   }, [currentUser]);
 
-  // function acceptApplication(id) {
-  //   let accepted = { athlete_id: id, completed: true };
-  //   fetch(`/deals/${id}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'content-type': 'deal/json',
-  //     },
-  //     body: JSON.stringify(accepted),
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then(update array);
-  // }
+  function acceptApplication(dealId, athleteId) {
+    let accepted = { athlete_id: athleteId, completed: true };
+    fetch(`/deals/${dealId}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(accepted),
+    }).then((resp) => resp.json());
+  }
 
-  //   function denyRequest(id) {
-  //     let denied = { athlete_id: null, completed: true };
-  //     fetch(`/deals/${id}`, {
-  //       method: 'PATCH',
-  //       headers: {
-  //         'content-type': 'deal/json',
-  //       },
-  //       body: JSON.stringify(denied),
-  //     })
-  //       .then((resp) => resp.json())
-  //       .then(update array);
-  //   }
+  function denyApplication(applicationId) {
+    fetch(`/applications/${applicationId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  }
 
   let renderApplicants = (deal) =>
     deal.applications.map((application) => {
@@ -53,20 +47,21 @@ function Applications({ currentUser }) {
           <Card.Body>
             <Card.Title>{application.athlete.school}</Card.Title>
             <Card.Text>
-              {} | {} | {}
+              {application.athlete.sport} | {application.athlete.year} |{' '}
+              {application.athlete.gender}
             </Card.Text>
             <Button
               size="small"
               variant="success"
               className="accept"
-              // onClick={() => acceptApplication(application.athlete.id)}
+              onClick={() => acceptApplication(deal.id, application.athlete.id)}
             >
               Accept
             </Button>
             <Button
               size="small"
               variant="danger"
-              // onClick={() => denyRequest(deal.id)}
+              onClick={() => denyApplication(application.id)}
             >
               Deny
             </Button>

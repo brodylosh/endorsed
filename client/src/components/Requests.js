@@ -15,18 +15,6 @@ function Requests({ currentUser }) {
       });
   }, [currentUser]);
 
-  // useEffect(() => {
-  //   fetch(`/deals`)
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       setIsLoading(false);
-  //       const filter = data.filter(
-  //         (deal) => deal.athlete_id === currentUser.id
-  //       );
-  //       setRequestsList(filter);
-  //     });
-  // }, [currentUser]);
-
   function acceptRequest(id) {
     let accepted = { completed: true };
     fetch(`/deals/${id}`, {
@@ -36,7 +24,6 @@ function Requests({ currentUser }) {
       },
       body: JSON.stringify(accepted),
     }).then((resp) => resp.json());
-    // .then(update array);
   }
 
   function denyRequest(id) {
@@ -48,7 +35,6 @@ function Requests({ currentUser }) {
       },
       body: JSON.stringify(denied),
     }).then((resp) => resp.json());
-    // .then(update array);
   }
 
   let renderRequests = requestsList.map((deal) =>
