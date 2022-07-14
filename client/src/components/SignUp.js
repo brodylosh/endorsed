@@ -187,7 +187,7 @@ function SignUp({ setCurrentUser }) {
             </Form.Text>
           </Form.Group>
           {errors.map((error) => {
-            return <p>{error}</p>;
+            return <p key={error.id}>{error}</p>;
           })}
           <Button variant="success" type="submit">
             Sign Up
@@ -282,7 +282,7 @@ function SignUp({ setCurrentUser }) {
             </Form.Text>
           </Form.Group>
           {errors.map((error) => {
-            return <p>{error}</p>;
+            return <p key={error.id}>{error}</p>;
           })}
           <Button variant="success" type="submit">
             Sign Up

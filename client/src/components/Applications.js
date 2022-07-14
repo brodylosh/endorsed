@@ -38,7 +38,7 @@ function Applications({ currentUser }) {
   let renderApplicants = (deal) =>
     deal.applications.map((application) => {
       return (
-        <Card className="deal-card">
+        <Card key={application.id} className="deal-card">
           <Card.Header>
             {application.athlete.first_name +
               ' ' +
@@ -71,7 +71,7 @@ function Applications({ currentUser }) {
     });
   let renderDeals = dealsList.map((deal) => {
     return !deal.completed ? (
-      <Card className="deal-card">
+      <Card key={deal.id} className="deal-card">
         <Card.Header>{deal.title}</Card.Header>
         <Card.Body>
           <Card.Title>{deal.description}</Card.Title>

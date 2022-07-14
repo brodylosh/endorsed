@@ -38,7 +38,11 @@ function AthleteCard({ athlete }) {
     let collaborator = collaborators.find(
       (collaborator) => collaborator.id == deal.collaborator_id
     );
-    return <li className="li">{collaborator.name}</li>;
+    return (
+      <li key={deal.id} className="li">
+        {collaborator.name}
+      </li>
+    );
   });
 
   let renderDeals = deals.map((deal) => {
@@ -47,7 +51,7 @@ function AthleteCard({ athlete }) {
     );
     return (
       <>
-        <Card className="deal-card">
+        <Card key={deal.id} className="deal-card">
           <Card.Header>{deal.title}</Card.Header>
           <Card.Body>
             <Card.Title>{deal.description}</Card.Title>

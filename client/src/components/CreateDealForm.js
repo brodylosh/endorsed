@@ -170,7 +170,7 @@ function CreateDealForm({ currentUser }) {
       <br />
       <br />
       {errors.map((error) => {
-        return <p>{error}</p>;
+        return <p key={error.id}>{error}</p>;
       })}
       <Button variant="success" type="submit">
         Create Deal

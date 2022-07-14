@@ -112,7 +112,7 @@ function NavBar({ currentUser, setCurrentUser }) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -139,7 +139,7 @@ function NavBar({ currentUser, setCurrentUser }) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.id}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={`/${page.toLowerCase()}`}
@@ -182,7 +182,7 @@ function NavBar({ currentUser, setCurrentUser }) {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                    <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                       <Typography
                         textAlign="center"
                         onClick={setting.clickAction}
@@ -238,7 +238,7 @@ function NavBar({ currentUser, setCurrentUser }) {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                    <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                       <Typography
                         textAlign="center"
                         onClick={setting.clickAction}

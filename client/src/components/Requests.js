@@ -39,7 +39,7 @@ function Requests({ currentUser }) {
 
   let renderRequests = requestsList.map((deal) =>
     !deal.completed ? (
-      <Card className="deal-card">
+      <Card key={deal.id} className="deal-card">
         <Card.Header>{deal.title}</Card.Header>
         <Card.Body>
           <Card.Title>{deal.description}</Card.Title>
