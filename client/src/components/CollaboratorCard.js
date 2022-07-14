@@ -1,18 +1,66 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Col, Button, Modal, Container, Row, Image } from 'react-bootstrap';
+import {
+  Col,
+  Button,
+  Card,
+  Modal,
+  Container,
+  Row,
+  Image,
+} from 'react-bootstrap';
 
-function CollaboratorCard({ currentUser, collaborator }) {
+function CollaboratorCard({ collaborator }) {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
 
-  const { name, image_url, address, remote, email, phone_number, athletes } =
-    collaborator;
+  const {
+    name,
+    image_url,
+    address,
+    remote,
+    email,
+    phone_number,
+    deals,
+    athletes,
+  } = collaborator;
+
+  let renderAthletes = deals.map((deal) => {
+    let athlete = athletes.find((athlete) => athlete.id == deal.athlete_id);
+    return athlete ? (
+      <li key={deal.id} className="li">
+        {athlete.first_name + ' ' + athlete.last_name}
+      </li>
+    ) : null;
+  });
+
+  let renderDeals = deals.map((deal) => {
+    let athlete = athletes.find((athlete) => athlete.id == deal.athlete_id);
+    return athlete ? (
+      <>
+        <Card key={deal.id} className="deal-card">
+          <Card.Header>{deal.title}</Card.Header>
+          <Card.Body>
+            <Card.Title>{deal.description}</Card.Title>
+            <Card.Text>{athlete.name}</Card.Text>
+            <Card.Img
+              src={
+                athlete.image_url
+                  ? athlete.image_url
+                  : 'https://www.zimplaza.co.zw/wp-content/uploads/placeholdercompany5f3438282f524800f1d49cd2921bb0a56101e1aa16097ebd313b64778fc7c4bd1611448792.png'
+              }
+              className="deal-card-image"
+            ></Card.Img>
+          </Card.Body>
+        </Card>
+        <br />
+      </>
+    ) : null;
+  });
 
   return (
     <Col xs={12} s={8} md={6} lg={3}>
@@ -66,11 +114,11 @@ function CollaboratorCard({ currentUser, collaborator }) {
             </Modal.Header>
             <Modal.Body className="contact-info">
               <p>
-                <b>Email: </b> <a href="mailto:email">{email}</a>
+                <b>Email: </b> <a href={`mailto:${email}`}></a>
               </p>
               <p>
                 <b>Phone Number: </b>
-                <a href="tel:+123456789">{phone_number}</a>
+                <a href={`tel:${phone_number}`}>{phone_number}</a>
               </p>
             </Modal.Body>
           </Modal>
@@ -97,11 +145,7 @@ function CollaboratorCard({ currentUser, collaborator }) {
                 <Row>
                   <h5>Athletes: </h5>
                   <br />
-                  <p>
-                    {athletes.map(
-                      (athlete) => athlete.first_name + ' ' + athlete.last_name
-                    )}
-                  </p>
+                  <ul>{renderAthletes}</ul>
                 </Row>
               </Container>
             </Modal.Body>
@@ -110,7 +154,7 @@ function CollaboratorCard({ currentUser, collaborator }) {
               <hr className="solid"></hr>
               <br />
               <h1>Deals:</h1>
-              {}
+              {renderDeals}
             </Container>
           </Modal>
         </CardActions>

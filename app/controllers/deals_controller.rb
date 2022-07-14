@@ -16,9 +16,15 @@ class DealsController < ApplicationController
         render json: deal, status: :created
     end
 
+    def update
+        deal = Deal.find(params[:id])
+        deal.update!(deal_params)
+        render json: deal, status: :ok
+    end
+
     private
 
     def deal_params
-        params.permit(:collaborator_id, :athlete_id, :title, :offer, :description, :university, :sport, :year, :age, :gender, :expiration_date, :location, :completed, :application_id)
+        params.permit(:collaborator_id, :athlete_id, :title, :offer, :description, :school, :sport, :year, :age, :gender, :expiration_date, :location, :completed, :application_id)
     end
 end

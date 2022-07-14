@@ -4,19 +4,23 @@ import { Card, Button, Modal } from 'react-bootstrap';
 function DealCard({ currentUser, deal }) {
   const [show, setShow] = useState(false);
 
+  let applied = deal.applications.some(
+    (application) => application.athlete_id == currentUser.id
+  );
+  const [isApplied, setIsApplied] = useState(applied);
+
   const {
     id,
     title,
     offer,
     description,
-    university,
+    school,
     sport,
     year,
     age,
     gender,
     expiration_date,
     location,
-    completed,
     collaborator,
   } = deal;
 
@@ -32,14 +36,8 @@ function DealCard({ currentUser, deal }) {
       },
       body: JSON.stringify(application),
     });
+    setIsApplied(true);
   }
-
-  // function getDate() {
-  //   let today = new Date();
-  //   let Difference_In_Time = expiration_date.getTime() - today.getTime();
-  //   let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-  //   return Difference_In_Days;
-  // }
 
   return (
     <Card className="deal-card">
@@ -57,23 +55,27 @@ function DealCard({ currentUser, deal }) {
           }
           className="deal-card-image"
         ></Card.Img>
-        {currentUser && currentUser.athlete ? (
-          <Button
-            size="small"
-            variant="success"
-            className="apply"
-            onClick={submitApplication}
-          >
-            Apply
-          </Button>
-        ) : null}
         <Button
           size="small"
           variant="outline-success"
+          className="view"
           onClick={() => setShow(true)}
         >
           View
         </Button>
+        {currentUser &&
+          currentUser.athlete &&
+          (isApplied ? (
+            <>
+              <br />
+              <br />
+              <Card.Title>APPLIED ✅</Card.Title>
+            </>
+          ) : (
+            <Button size="small" variant="success" onClick={submitApplication}>
+              Apply
+            </Button>
+          ))}
         <Modal
           show={show}
           onHide={() => setShow(false)}
@@ -91,15 +93,14 @@ function DealCard({ currentUser, deal }) {
             <p>Location: {location}</p>
             <p>Expires: {expiration_date}</p>
             <br />
-            {university || sport || year || age || gender ? (
+            {school || sport || year || age || gender ? (
               <h5>Athlete Criteria:</h5>
             ) : null}
-            <br />
-            {university ? <p>University: {university}</p> : null}
-            {university ? <p>Sport: {sport}</p> : null}
-            {university ? <p>Year: {year}</p> : null}
-            {university ? <p>Age: {age}</p> : null}
-            {university ? <p>Gender: {gender}</p> : null}
+            {school ? <p>School: {school}</p> : null}
+            {sport ? <p>Sport: {sport}</p> : null}
+            {year ? <p>Year: {year}</p> : null}
+            {age ? <p>Age: {age}</p> : null}
+            {gender ? <p>Gender: {gender}</p> : null}
           </Modal.Body>
         </Modal>
       </Card.Body>

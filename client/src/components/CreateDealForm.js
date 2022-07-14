@@ -8,7 +8,7 @@ function CreateDealForm({ currentUser }) {
   const [offer, setOffer] = useState(null);
   const [expirationDate, setExpirationDate] = useState(null);
   const [athleteId, setAthleteId] = useState(null);
-  const [university, setUniversity] = useState('');
+  const [school, setSchool] = useState('');
   const [sport, setSport] = useState('');
   const [year, setYear] = useState('');
   const [age, setAge] = useState(null);
@@ -27,7 +27,7 @@ function CreateDealForm({ currentUser }) {
       title: title,
       offer: offer,
       description: description,
-      university: university,
+      school: school,
       sport: sport,
       year: year,
       age: age,
@@ -46,7 +46,6 @@ function CreateDealForm({ currentUser }) {
         navigate('/deals');
       } else {
         res.json().then((data) => {
-          console.log(data.errors);
           setErrors(data.errors);
         });
       }
@@ -55,7 +54,7 @@ function CreateDealForm({ currentUser }) {
 
   return (
     <Form className="rounded p-4 p-sm-3 form" onSubmit={createDeal}>
-      <h1>Create Deal</h1>
+      <h1 className="page-header">Create Deal</h1>
       <br />
       <Form.Group className="mb-3">
         <Form.Label>Title*</Form.Label>
@@ -66,7 +65,7 @@ function CreateDealForm({ currentUser }) {
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Description</Form.Label>
+        <Form.Label>Description*</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
@@ -76,7 +75,7 @@ function CreateDealForm({ currentUser }) {
         />
       </Form.Group>
       <InputGroup className="mb-3 half-left">
-        <Form.Label className="offer">Offer</Form.Label>
+        <Form.Label className="offer">Offer*</Form.Label>
 
         <InputGroup.Text>$</InputGroup.Text>
         <FormControl
@@ -86,7 +85,7 @@ function CreateDealForm({ currentUser }) {
         />
       </InputGroup>
       <Form.Group className="mb-3 half-right">
-        <Form.Label>Expiration Date</Form.Label>
+        <Form.Label>Expiration Date*</Form.Label>
         <Form.Control
           type="date"
           placeholder="Expiration"
@@ -95,7 +94,7 @@ function CreateDealForm({ currentUser }) {
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Location</Form.Label>
+        <Form.Label>Location*</Form.Label>
         <Form.Control
           placeholder="Location"
           value={location}
@@ -108,19 +107,19 @@ function CreateDealForm({ currentUser }) {
       <h5>Optional Athlete Criteria</h5>
       <br />
       <Form.Group className="mb-3">
-        <Form.Label>Athlete</Form.Label>
+        <Form.Label>Athlete ID</Form.Label>
         <Form.Control
-          placeholder="Athlete"
+          placeholder="Athlete ID"
           value={athleteId}
           onChange={(e) => setAthleteId(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>University</Form.Label>
+        <Form.Label>School</Form.Label>
         <Form.Control
-          placeholder="University"
-          value={university}
-          onChange={(e) => setUniversity(e.target.value)}
+          placeholder="School"
+          value={school}
+          onChange={(e) => setSchool(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3 half-left">
@@ -164,8 +163,14 @@ function CreateDealForm({ currentUser }) {
           <option value="Non-Binary">Non-Binary</option>
         </Form.Select>
       </Form.Group>
+      <br />
+      <Form.Text muted className="disclaimer">
+        *required fields
+      </Form.Text>
+      <br />
+      <br />
       {errors.map((error) => {
-        return <p>{error}</p>;
+        return <p key={error.id}>{error}</p>;
       })}
       <Button variant="success" type="submit">
         Create Deal

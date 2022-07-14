@@ -24,7 +24,7 @@ function SignUp({ setCurrentUser }) {
       e.target.image.files[0],
       e.target.image.value
     );
-    athleteData.append('athlete[university]', e.target.university.value);
+    athleteData.append('athlete[school]', e.target.school.value);
     athleteData.append('athlete[sport]', e.target.sport.value);
     athleteData.append('athlete[year]', e.target.year.value);
     athleteData.append('athlete[birthday]', e.target.birthday.value);
@@ -87,7 +87,7 @@ function SignUp({ setCurrentUser }) {
     <div className="SignUp">
       {userType === 'athlete' ? (
         <Form className="rounded p-4 p-sm-3 form" onSubmit={athleteSignUp}>
-          <h1>Sign Up</h1>
+          <h1 className="page-header">Sign Up</h1>
           <br />
           <ToggleButtonGroup
             color="success"
@@ -113,8 +113,8 @@ function SignUp({ setCurrentUser }) {
             <Form.Control type="file" name="image" />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>University*</Form.Label>
-            <Form.Control placeholder="University" name="university" />
+            <Form.Label>School*</Form.Label>
+            <Form.Control placeholder="School" name="school" />
           </Form.Group>
           <Form.Group className="mb-3 half-left">
             <Form.Label>Sport*</Form.Label>
@@ -176,23 +176,25 @@ function SignUp({ setCurrentUser }) {
               placeholder="Password"
               name="password"
             />
-            <Form.Text muted>
+            <Form.Text muted className="disclaimer">
               *must be atleast 8 characters and contain: one uppercase letter,
               one lowercase letter, one number, & one symbol
             </Form.Text>
             <br />
             <br />
-            <Form.Text muted>*required fields</Form.Text>
+            <Form.Text muted className="disclaimer">
+              *required fields
+            </Form.Text>
           </Form.Group>
           {errors.map((error) => {
-            return <p>{error}</p>;
+            return <p key={error.id}>{error}</p>;
           })}
           <Button variant="success" type="submit">
             Sign Up
           </Button>
           <br />
           <br />
-          <h4>Already a member?</h4>
+          <h4 className="form-text">already a member?</h4>
           <div className="d-grid gap-2">
             <Button
               size="lg"
@@ -206,7 +208,7 @@ function SignUp({ setCurrentUser }) {
         </Form>
       ) : (
         <Form className="rounded p-4 p-sm-3 form" onSubmit={collaboratorSignUp}>
-          <h1>Sign Up</h1>
+          <h1 className="page-header">Sign Up</h1>
           <br />
           <ToggleButtonGroup
             color="success"
@@ -269,24 +271,25 @@ function SignUp({ setCurrentUser }) {
               placeholder="Password"
               name="password"
             />
-            <Form.Text muted>
-              Your password must be 8-20 characters long, contain letters and
-              numbers, and must not contain spaces, special characters, or
-              emoji.
+            <Form.Text muted className="disclaimer">
+              *must be atleast 8 characters and contain: one uppercase letter,
+              one lowercase letter, one number, & one symbol
             </Form.Text>
             <br />
             <br />
-            <Form.Text muted>*required fields</Form.Text>
+            <Form.Text muted className="disclaimer">
+              *required fields
+            </Form.Text>
           </Form.Group>
           {errors.map((error) => {
-            return <p>{error}</p>;
+            return <p key={error.id}>{error}</p>;
           })}
           <Button variant="success" type="submit">
             Sign Up
           </Button>
           <br />
           <br />
-          <h4>Already a member?</h4>
+          <h4 className="form-text">already a member?</h4>
           <div className="d-grid gap-2">
             <Button
               size="lg"

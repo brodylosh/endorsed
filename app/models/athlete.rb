@@ -7,11 +7,15 @@ class Athlete < ApplicationRecord
         Rails.application.routes.url_helpers.url_for(image) if image.attached?
     end
 
-    # has_many :deals
+    has_many :deals
     has_many :applications
-    has_many :deals, through: :applications 
+    # has_many :deals, through: :applications 
     has_many :collaborators, through: :deals
 
+    # validates :first_name, presence: true
+    # validates :last_name, presence: true
+    # validates :school, presence: true
+    # validates :sport, presence: true
     # validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
 
     # PASSWORD_REQUIREMENTS = /\A

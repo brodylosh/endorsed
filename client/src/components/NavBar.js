@@ -12,14 +12,28 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Athletes', 'Deals', 'Collaborators'];
-const settings = ['Edit', 'Deals', 'Logout'];
-
 function NavBar({ currentUser, setCurrentUser }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const navigate = useNavigate();
+
+  const pages = ['Athletes', 'Deals', 'Collaborators'];
+  const settings = [{ name: 'Log Out', clickAction: logOut }];
+
+  if (currentUser && currentUser.athlete) {
+    settings.unshift({
+      name: 'Requests',
+      clickAction: () => navigate('/requests'),
+    });
+  }
+
+  if (currentUser && !currentUser.athlete) {
+    settings.unshift({
+      name: 'Applications',
+      clickAction: () => navigate('/applications'),
+    });
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -62,6 +76,9 @@ function NavBar({ currentUser, setCurrentUser }) {
               color: 'inherit',
               textDecoration: 'none',
               paddingLeft: '5px',
+              // '&:hover': {
+              //   color: 'green',
+              // },
             }}
           >
             endorsed
@@ -95,7 +112,7 @@ function NavBar({ currentUser, setCurrentUser }) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -122,11 +139,18 @@ function NavBar({ currentUser, setCurrentUser }) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.id}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={`/${page.toLowerCase()}`}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                  '&:hover': {
+                    color: 'green',
+                  },
+                }}
               >
                 {page}
               </Button>
@@ -158,9 +182,12 @@ function NavBar({ currentUser, setCurrentUser }) {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={logOut}>
-                        {setting}
+                    <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        onClick={setting.clickAction}
+                      >
+                        {setting.name}
                       </Typography>
                     </MenuItem>
                   ))}
@@ -182,6 +209,9 @@ function NavBar({ currentUser, setCurrentUser }) {
                     color: 'white',
                     display: 'block',
                     marginRight: '4rem',
+                    '&:hover': {
+                      color: 'green',
+                    },
                   }}
                 >
                   Create Deal
@@ -208,9 +238,12 @@ function NavBar({ currentUser, setCurrentUser }) {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={logOut}>
-                        {setting}
+                    <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        onClick={setting.clickAction}
+                      >
+                        {setting.name}
                       </Typography>
                     </MenuItem>
                   ))}
@@ -228,7 +261,14 @@ function NavBar({ currentUser, setCurrentUser }) {
                 component={Link}
                 to="/login"
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                  '&:hover': {
+                    color: 'green',
+                  },
+                }}
               >
                 Log In
               </Button>

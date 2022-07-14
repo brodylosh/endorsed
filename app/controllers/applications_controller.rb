@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+    skip_before_action :authorize, only: [:destroy]
 
     def index
         applications = Application.all 
@@ -13,6 +14,12 @@ class ApplicationsController < ApplicationController
     def create
         application = Application.create!(application_params)
         render json: application, status: :created
+    end
+
+    def destroy
+        application = Application.find(params[:id])
+        application.destroy
+        head :no_content
     end
 
     private

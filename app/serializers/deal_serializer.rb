@@ -1,6 +1,7 @@
 class DealSerializer < ActiveModel::Serializer
-  attributes :id, :collaborator_id, :athlete_id, :title, :offer, :description, :university, :sport, :year, :age, :gender, :expiration_date, :location, :completed
+  attributes :id, :collaborator_id, :athlete_id, :title, :offer, :description, :school, :sport, :year, :age, :gender, :expiration_date, :location, :completed
 
-  belongs_to :athletes
+  belongs_to :athlete
   belongs_to :collaborator
+  has_many :applications
 end

@@ -6,6 +6,7 @@
 
 .home-feature-image {
   position: relative;
+  z-index: 0;
 }
 
 .feature-image {
@@ -15,8 +16,9 @@
 
 .feature-image-header {
   position: absolute;
-  top: 50%;
-  left: 50%
+  top: 40%;
+  width: 100%;
+  z-index: 1;
 }
 
 .form {
@@ -111,10 +113,12 @@
   display: flex;
   float: left;
   margin-left: 5%;
-  font-family: 'bindhu';
+  font-family: 'hei reina';
+  font-size: 65px;
+  margin-bottom: 0;
 }
 
-.apply {
+.view, .accept {
   margin-right: 1%;
 }
 
@@ -152,4 +156,24 @@
 
 .modal-content {
   display: block;
+}
+
+.li {
+  margin-left: 5%;
+}
+
+.page-header {
+  font-family: 'hei reina';
+  font-size: 100px;
+  margin-bottom: -15px;
+}
+
+.form-text {
+  font-family: 'hei reina';
+  font-size: 40px;
+}
+
+.disclaimer {
+  font-family: 'arial';
+  font-size: 1rem;
 }

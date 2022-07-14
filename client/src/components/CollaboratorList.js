@@ -38,6 +38,7 @@ function CollaboratorList({ currentUser }) {
       <br />
       <SearchSort setSearch={setSearch} />
       <br />
+      <br />
       <Container>
         {isLoading ? (
           <Spinner animation="border" />
