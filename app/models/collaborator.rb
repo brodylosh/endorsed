@@ -15,7 +15,6 @@ class Collaborator < ApplicationRecord
 
 
     # validates :name, presence: true
-    # validates :address, presence: true
     # validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
 
     # PASSWORD_REQUIREMENTS = /\A
