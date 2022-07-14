@@ -23,7 +23,16 @@ function Requests({ currentUser }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify(accepted),
-    }).then((resp) => resp.json());
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then(() => {
+          const filteredRequests = requestsList.filter(
+            (deal) => deal.id !== id
+          );
+          setRequestsList(filteredRequests);
+        });
+      }
+    });
   }
 
   function denyRequest(id) {
@@ -34,7 +43,16 @@ function Requests({ currentUser }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify(denied),
-    }).then((resp) => resp.json());
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then(() => {
+          const filteredRequests = requestsList.filter(
+            (deal) => deal.id !== id
+          );
+          setRequestsList(filteredRequests);
+        });
+      }
+    });
   }
 
   let renderRequests = requestsList.map((deal) =>
