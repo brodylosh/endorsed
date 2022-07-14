@@ -3,6 +3,7 @@ import { Card, Button, Row, Spinner, Container } from 'react-bootstrap';
 
 function Applications({ currentUser }) {
   const [dealsList, setDealsList] = useState([]);
+  const [deniedIds, setDeniedIds] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,7 +24,14 @@ function Applications({ currentUser }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify(accepted),
-    }).then((resp) => resp.json());
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then(() => {
+          const filteredDeals = dealsList.filter((deal) => deal.id !== dealId);
+          setDealsList(filteredDeals);
+        });
+      }
+    });
   }
 
   function denyApplication(applicationId) {
@@ -33,6 +41,7 @@ function Applications({ currentUser }) {
         'content-type': 'application/json',
       },
     });
+    setDeniedIds([...deniedIds, applicationId]);
   }
 
   let renderApplicants = (deal) =>
@@ -50,21 +59,29 @@ function Applications({ currentUser }) {
               {application.athlete.sport} | {application.athlete.year} |{' '}
               {application.athlete.gender}
             </Card.Text>
-            <Button
-              size="small"
-              variant="success"
-              className="accept"
-              onClick={() => acceptApplication(deal.id, application.athlete.id)}
-            >
-              Accept
-            </Button>
-            <Button
-              size="small"
-              variant="danger"
-              onClick={() => denyApplication(application.id)}
-            >
-              Deny
-            </Button>
+            {!deniedIds.includes(application.id) ? (
+              <>
+                <Button
+                  size="small"
+                  variant="success"
+                  className="accept"
+                  onClick={() =>
+                    acceptApplication(deal.id, application.athlete.id)
+                  }
+                >
+                  Accept
+                </Button>
+                <Button
+                  size="small"
+                  variant="danger"
+                  onClick={() => denyApplication(application.id)}
+                >
+                  Deny
+                </Button>
+              </>
+            ) : (
+              <Card.Text>DENIED APPLICATION</Card.Text>
+            )}
           </Card.Body>
         </Card>
       );
