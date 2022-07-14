@@ -73,12 +73,12 @@ function NavBar({ currentUser, setCurrentUser }) {
               fontFamily: 'bindhu',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              // '&:hover': {
-              //   color: 'green',
-              // },
               color: 'inherit',
               textDecoration: 'none',
               paddingLeft: '5px',
+              // '&:hover': {
+              //   color: 'green',
+              // },
             }}
           >
             endorsed
@@ -183,10 +183,7 @@ function NavBar({ currentUser, setCurrentUser }) {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                      <Typography
-                        textAlign="center"
-                        onClick={() => setting.clickFn}
-                      >
+                      <Typography textAlign="center" onClick={setting.clickFn}>
                         {setting.name}
                       </Typography>
                     </MenuItem>
@@ -209,6 +206,9 @@ function NavBar({ currentUser, setCurrentUser }) {
                     color: 'white',
                     display: 'block',
                     marginRight: '4rem',
+                    '&:hover': {
+                      color: 'green',
+                    },
                   }}
                 >
                   Create Deal
@@ -255,7 +255,14 @@ function NavBar({ currentUser, setCurrentUser }) {
                 component={Link}
                 to="/login"
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                  '&:hover': {
+                    color: 'green',
+                  },
+                }}
               >
                 Log In
               </Button>
