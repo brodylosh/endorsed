@@ -3,4 +3,5 @@ class DealSerializer < ActiveModel::Serializer
 
   belongs_to :athlete
   belongs_to :collaborator
+  has_many :applications
 end

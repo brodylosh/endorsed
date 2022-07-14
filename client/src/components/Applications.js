@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card, Button, Row, Spinner } from 'react-bootstrap';
+import { Card, Button, Row, Spinner, Container } from 'react-bootstrap';
 
 function Applications({ currentUser }) {
   const [dealsList, setDealsList] = useState([]);
@@ -61,11 +61,13 @@ function Applications({ currentUser }) {
   return (
     <>
       <h1>Deals</h1>
-      {isLoading ? (
-        <Spinner animation="border" />
-      ) : (
-        <Row className="g-4">{renderDeals}</Row>
-      )}
+      <Container>
+        {isLoading ? (
+          <Spinner animation="border" />
+        ) : (
+          <Row className="g-4">{renderDeals}</Row>
+        )}
+      </Container>
     </>
   );
 }
