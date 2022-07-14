@@ -4,6 +4,11 @@ import { Card, Button, Modal } from 'react-bootstrap';
 function DealCard({ currentUser, deal }) {
   const [show, setShow] = useState(false);
 
+  let applied = deal.applications.some(
+    (application) => application.athlete_id == currentUser.id
+  );
+  const [isApplied, setIsApplied] = useState(applied);
+
   const {
     id,
     title,
@@ -16,7 +21,6 @@ function DealCard({ currentUser, deal }) {
     gender,
     expiration_date,
     location,
-    completed,
     collaborator,
   } = deal;
 
@@ -32,6 +36,7 @@ function DealCard({ currentUser, deal }) {
       },
       body: JSON.stringify(application),
     });
+    setIsApplied(true);
   }
 
   return (
@@ -50,23 +55,27 @@ function DealCard({ currentUser, deal }) {
           }
           className="deal-card-image"
         ></Card.Img>
-        {currentUser && currentUser.athlete ? (
-          <Button
-            size="small"
-            variant="success"
-            className="apply"
-            onClick={submitApplication}
-          >
-            Apply
-          </Button>
-        ) : null}
         <Button
           size="small"
           variant="outline-success"
+          className="view"
           onClick={() => setShow(true)}
         >
           View
         </Button>
+        {currentUser &&
+          currentUser.athlete &&
+          (isApplied ? (
+            <>
+              <br />
+              <br />
+              <Card.Title>APPLIED ✅</Card.Title>
+            </>
+          ) : (
+            <Button size="small" variant="success" onClick={submitApplication}>
+              Apply
+            </Button>
+          ))}
         <Modal
           show={show}
           onHide={() => setShow(false)}

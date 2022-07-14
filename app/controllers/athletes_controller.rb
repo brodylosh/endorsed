@@ -1,5 +1,5 @@
 class AthletesController < ApplicationController
-    skip_before_action :authorize, only: [:index, :show, :create]
+    skip_before_action :authorize, only: [:index, :show, :deals, :applications, :create]
     
     def index
         athletes = Athlete.all 
@@ -8,7 +8,17 @@ class AthletesController < ApplicationController
 
     def show
         athlete = Athlete.find(params[:id])
+        render json: athlete, status: :ok
+    end
+
+    def deals
+        athlete = Athlete.find(params[:id])
         render json: athlete.deals, status: :ok
+    end
+
+    def applications
+        athlete = Athlete.find(params[:id])
+        render json: athlete.applications, status: :ok
     end
 
     def create
