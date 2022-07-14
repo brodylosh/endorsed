@@ -54,7 +54,7 @@ function CreateDealForm({ currentUser }) {
 
   return (
     <Form className="rounded p-4 p-sm-3 form" onSubmit={createDeal}>
-      <h1>Create Deal</h1>
+      <h1 className="page-header">Create Deal</h1>
       <br />
       <Form.Group className="mb-3">
         <Form.Label>Title*</Form.Label>
@@ -164,7 +164,9 @@ function CreateDealForm({ currentUser }) {
         </Form.Select>
       </Form.Group>
       <br />
-      <Form.Text muted>*required fields</Form.Text>
+      <Form.Text muted className="disclaimer">
+        *required fields
+      </Form.Text>
       <br />
       <br />
       {errors.map((error) => {

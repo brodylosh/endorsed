@@ -15,6 +15,18 @@ function Requests({ currentUser }) {
       });
   }, [currentUser]);
 
+  // useEffect(() => {
+  //   fetch(`/deals`)
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       setIsLoading(false);
+  //       const filter = data.filter(
+  //         (deal) => deal.athlete_id === currentUser.id
+  //       );
+  //       setRequestsList(filter);
+  //     });
+  // }, [currentUser]);
+
   function acceptRequest(id) {
     let accepted = { completed: true };
     fetch(`/deals/${id}`, {
@@ -78,7 +90,8 @@ function Requests({ currentUser }) {
 
   return (
     <>
-      <h1>Requests</h1>
+      <h1 className="page-header">deal requests</h1>
+      <br />
       <Container>
         {isLoading ? (
           <Spinner animation="border" />

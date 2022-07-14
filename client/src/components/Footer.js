@@ -23,7 +23,14 @@ function Footer() {
               <Button
                 component={Link}
                 to="/athletes"
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  '&:hover': {
+                    color: 'green',
+                  },
+                }}
               >
                 Athletes
               </Button>
@@ -32,7 +39,14 @@ function Footer() {
               <Button
                 component={Link}
                 to="/deals"
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  '&:hover': {
+                    color: 'green',
+                  },
+                }}
               >
                 Deals
               </Button>
@@ -41,7 +55,14 @@ function Footer() {
               <Button
                 component={Link}
                 to="/collaborators"
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  '&:hover': {
+                    color: 'green',
+                  },
+                }}
               >
                 Collaborators
               </Button>

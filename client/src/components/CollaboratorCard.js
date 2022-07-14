@@ -112,11 +112,11 @@ function CollaboratorCard({ collaborator }) {
             </Modal.Header>
             <Modal.Body className="contact-info">
               <p>
-                <b>Email: </b> <a href="mailto:email">{email}</a>
+                <b>Email: </b> <a href={`mailto:${email}`}></a>
               </p>
               <p>
                 <b>Phone Number: </b>
-                <a href="tel:+123456789">{phone_number}</a>
+                <a href={`tel:${phone_number}`}>{phone_number}</a>
               </p>
             </Modal.Body>
           </Modal>

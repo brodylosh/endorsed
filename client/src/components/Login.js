@@ -36,9 +36,8 @@ function Login({ setCurrentUser }) {
   return (
     <div className="Login">
       <Form className="rounded p-4 p-sm-3 form" onSubmit={login}>
-        <h1>Log In</h1>
+        <h1 className="page-header">Log In</h1>
         <br />
-        <h4>{errors}</h4>
         <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -56,12 +55,13 @@ function Login({ setCurrentUser }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+        <h4>{errors}</h4>
         <Button variant="success" type="submit" size="lg">
           Log In
         </Button>
         <br />
         <br />
-        <h4>New to endorsed?</h4>
+        <h4 className="form-text">new to endorsed?</h4>
         <div className="d-grid gap-2">
           <Button
             size="lg"

@@ -157,3 +157,19 @@
 .li {
   margin-left: 5%;
 }
+
+.page-header {
+  font-family: 'hei reina';
+  font-size: 100px;
+  margin-bottom: -15px;
+}
+
+.form-text {
+  font-family: 'hei reina';
+  font-size: 40px;
+}
+
+.disclaimer {
+  font-family: 'arial';
+  font-size: 1rem;
+}

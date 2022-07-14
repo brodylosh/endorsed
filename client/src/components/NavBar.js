@@ -73,6 +73,9 @@ function NavBar({ currentUser, setCurrentUser }) {
               fontFamily: 'bindhu',
               fontWeight: 700,
               letterSpacing: '.3rem',
+              // '&:hover': {
+              //   color: 'green',
+              // },
               color: 'inherit',
               textDecoration: 'none',
               paddingLeft: '5px',
@@ -140,7 +143,14 @@ function NavBar({ currentUser, setCurrentUser }) {
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={`/${page.toLowerCase()}`}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                  '&:hover': {
+                    color: 'green',
+                  },
+                }}
               >
                 {page}
               </Button>
@@ -173,7 +183,10 @@ function NavBar({ currentUser, setCurrentUser }) {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={setting.clickFn}>
+                      <Typography
+                        textAlign="center"
+                        onClick={() => setting.clickFn}
+                      >
                         {setting.name}
                       </Typography>
                     </MenuItem>
