@@ -87,7 +87,6 @@ function DealCard({ currentUser, deal }) {
             {school || sport || year || age || gender ? (
               <h5>Athlete Criteria:</h5>
             ) : null}
-            <br />
             {school ? <p>School: {school}</p> : null}
             {sport ? <p>Sport: {sport}</p> : null}
             {year ? <p>Year: {year}</p> : null}

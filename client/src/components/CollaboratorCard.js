@@ -31,14 +31,14 @@ function CollaboratorCard({ collaborator }) {
 
   let renderAthletes = deals.map((deal) => {
     let athlete = athletes.find((athlete) => athlete.id == deal.athlete_id);
-    return (
+    return athlete ? (
       <li className="li">{athlete.first_name + ' ' + athlete.last_name}</li>
-    );
+    ) : null;
   });
 
   let renderDeals = deals.map((deal) => {
     let athlete = athletes.find((athlete) => athlete.id == deal.athlete_id);
-    return (
+    return athlete ? (
       <>
         <Card className="deal-card">
           <Card.Header>{deal.title}</Card.Header>
@@ -57,7 +57,7 @@ function CollaboratorCard({ collaborator }) {
         </Card>
         <br />
       </>
-    );
+    ) : null;
   });
 
   return (

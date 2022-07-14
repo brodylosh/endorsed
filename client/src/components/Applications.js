@@ -15,6 +15,8 @@ function Applications({ currentUser }) {
       });
   }, [currentUser]);
 
+  //   let renderApplicants =
+
   //   function acceptRequest(id) {
   //     let accepted = { completed: true };
   //     fetch(`/deals/${id}`, {
@@ -47,32 +49,10 @@ function Applications({ currentUser }) {
         <Card.Header>{deal.title}</Card.Header>
         <Card.Body>
           <Card.Title>{deal.description}</Card.Title>
-          <Card.Text>{deal.collaborator.name}</Card.Text>
-          <Card.Text className="green">Offer: ${deal.offer}</Card.Text>
           <Card.Text>Expires: {deal.expiration_date}</Card.Text>
-          <Card.Img
-            src={
-              deal.collaborator.image_url
-                ? deal.collaborator.image_url
-                : 'https://www.zimplaza.co.zw/wp-content/uploads/placeholdercompany5f3438282f524800f1d49cd2921bb0a56101e1aa16097ebd313b64778fc7c4bd1611448792.png'
-            }
-            className="deal-card-image"
-          ></Card.Img>
-          <Button
-            size="small"
-            variant="success"
-            className="apply"
-            // onClick={() => acceptRequest(deal.id)}
-          >
-            Accept
-          </Button>
-          <Button
-            size="small"
-            variant="danger"
-            // onClick={() => denyRequest(deal.id)}
-          >
-            Deny
-          </Button>
+          <Card.Text className="green">Offer: ${deal.offer}</Card.Text>
+          <Card.Title>Applicants:</Card.Title>
+          {/* {renderApplicants} */}
         </Card.Body>
       </Card>
     ) : null
