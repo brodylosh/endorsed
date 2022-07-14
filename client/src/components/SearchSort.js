@@ -4,6 +4,8 @@ import { Form, Dropdown } from 'react-bootstrap';
 function SearchSort({ setSearch, setSort }) {
   let location = useLocation();
 
+  let pageTitle = location.pathname.split('/')[1];
+
   return (
     <Form className="search-sort">
       {/* {if (location.pathName === '/athletes') {
@@ -12,6 +14,7 @@ function SearchSort({ setSearch, setSort }) {
        } else if (location.pathName === '/collaborators' {
         return <h1 className="page-title">collaborators</h1>
        }} */}
+      <h1 className="page-title">{pageTitle}</h1>
       {/* <Dropdown className="sort">
         <Dropdown.Toggle variant="success">Sort By:</Dropdown.Toggle>
         <Dropdown.Menu>

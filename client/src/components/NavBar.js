@@ -19,19 +19,19 @@ function NavBar({ currentUser, setCurrentUser }) {
   const navigate = useNavigate();
 
   const pages = ['Athletes', 'Deals', 'Collaborators'];
-  const settings = [{ name: 'Log Out', clickFn: logOut }];
+  const settings = [{ name: 'Log Out', clickAction: logOut }];
 
   if (currentUser && currentUser.athlete) {
     settings.unshift({
       name: 'Requests',
-      clickFn: () => navigate('/requests'),
+      clickAction: () => navigate('/requests'),
     });
   }
 
   if (currentUser && !currentUser.athlete) {
     settings.unshift({
       name: 'Applications',
-      clickFn: () => navigate('/applications'),
+      clickAction: () => navigate('/applications'),
     });
   }
 
@@ -183,7 +183,10 @@ function NavBar({ currentUser, setCurrentUser }) {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={setting.clickFn}>
+                      <Typography
+                        textAlign="center"
+                        onClick={setting.clickAction}
+                      >
                         {setting.name}
                       </Typography>
                     </MenuItem>
@@ -236,7 +239,10 @@ function NavBar({ currentUser, setCurrentUser }) {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={setting.clickFn}>
+                      <Typography
+                        textAlign="center"
+                        onClick={setting.clickAction}
+                      >
                         {setting.name}
                       </Typography>
                     </MenuItem>

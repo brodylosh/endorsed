@@ -111,7 +111,9 @@
   display: flex;
   float: left;
   margin-left: 5%;
-  font-family: 'bindhu';
+  font-family: 'hei reina';
+  font-size: 65px;
+  margin-bottom: 0;
 }
 
 .apply, .accept {
