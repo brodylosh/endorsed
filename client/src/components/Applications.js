@@ -15,20 +15,18 @@ function Applications({ currentUser }) {
       });
   }, [currentUser]);
 
-  //   let renderApplicants =
-
-  //   function acceptRequest(id) {
-  //     let accepted = { completed: true };
-  //     fetch(`/deals/${id}`, {
-  //       method: 'PATCH',
-  //       headers: {
-  //         'content-type': 'deal/json',
-  //       },
-  //       body: JSON.stringify(accepted),
-  //     })
-  //       .then((resp) => resp.json())
-  //       .then(console.log);
-  //   }
+  // function acceptApplication(id) {
+  //   let accepted = { athlete_id: id, completed: true };
+  //   fetch(`/deals/${id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'content-type': 'deal/json',
+  //     },
+  //     body: JSON.stringify(accepted),
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then(update array);
+  // }
 
   //   function denyRequest(id) {
   //     let denied = { athlete_id: null, completed: true };
@@ -40,11 +38,38 @@ function Applications({ currentUser }) {
   //       body: JSON.stringify(denied),
   //     })
   //       .then((resp) => resp.json())
-  //       .then(console.log);
+  //       .then(update array);
   //   }
 
   let renderDeals = dealsList.map((deal) =>
     !deal.completed ? (
+      //       let renderAthletes = deal.applications.map((application) => {
+      //           return (
+      //             <Card className="deal-card">
+      //         <Card.Header>{application.athlete.first_name + ' ' + application.athlete.last_name}</Card.Header>
+      //         <Card.Body>
+      //           <Card.Title>{application.athlete.school}</Card.Title>
+      //           <Card.Text>{} | {} | {}</Card.Text>
+      //           <Button
+      //             size="small"
+      //             variant="success"
+      //             className="accept"
+      //             onClick={() => acceptApplication(application.athlete.id)}
+      //           >
+      //             Accept
+      //           </Button>
+      //           <Button
+      //             size="small"
+      //             variant="danger"
+      //             // onClick={() => denyRequest(deal.id)}
+      //           >
+      //             Deny
+      //           </Button>
+      //          </Card.Body>
+
+      //           )
+      //       })
+
       <Card className="deal-card">
         <Card.Header>{deal.title}</Card.Header>
         <Card.Body>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card, Button, Row, Spinner } from 'react-bootstrap';
+import { Card, Button, Row, Container, Spinner } from 'react-bootstrap';
 
 function Requests({ currentUser }) {
   const [requestsList, setRequestsList] = useState([]);
@@ -23,9 +23,8 @@ function Requests({ currentUser }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify(accepted),
-    })
-      .then((resp) => resp.json())
-      .then(console.log);
+    }).then((resp) => resp.json());
+    // .then(update array);
   }
 
   function denyRequest(id) {
@@ -36,9 +35,8 @@ function Requests({ currentUser }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify(denied),
-    })
-      .then((resp) => resp.json())
-      .then(console.log);
+    }).then((resp) => resp.json());
+    // .then(update array);
   }
 
   let renderRequests = requestsList.map((deal) =>
@@ -61,7 +59,7 @@ function Requests({ currentUser }) {
           <Button
             size="small"
             variant="success"
-            className="apply"
+            className="accept"
             onClick={() => acceptRequest(deal.id)}
           >
             Accept
@@ -81,11 +79,13 @@ function Requests({ currentUser }) {
   return (
     <>
       <h1>Requests</h1>
-      {isLoading ? (
-        <Spinner animation="border" />
-      ) : (
-        <Row className="g-4">{renderRequests}</Row>
-      )}
+      <Container>
+        {isLoading ? (
+          <Spinner animation="border" />
+        ) : (
+          <Row className="g-4">{renderRequests}</Row>
+        )}
+      </Container>
     </>
   );
 }

@@ -12,16 +12,16 @@ function SearchSort({ setSearch, setSort }) {
        } else if (location.pathName === '/collaborators' {
         return <h1 className="page-title">collaborators</h1>
        }} */}
-      <Dropdown className="sort">
+      {/* <Dropdown className="sort">
         <Dropdown.Toggle variant="success">Sort By:</Dropdown.Toggle>
-        <Dropdown.Menu onChange={(e) => console.log('hi')}>
+        <Dropdown.Menu>
           <Dropdown.Item value="all">All</Dropdown.Item>
           <Dropdown.Item value="name">Name</Dropdown.Item>
           <Dropdown.Item value="sport">Sport</Dropdown.Item>
           <Dropdown.Item value="school">School</Dropdown.Item>
           <Dropdown.Item value="year">Year</Dropdown.Item>
         </Dropdown.Menu>
-      </Dropdown>
+      </Dropdown> */}
       <Form.Group className="mb-3 search">
         <Form.Control
           placeholder="Search..."

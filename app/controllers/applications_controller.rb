@@ -5,10 +5,10 @@ class ApplicationsController < ApplicationController
         render json: applications, status: :ok
     end
 
-    def show
-        application = Application.find(params[:id])
-        render json: application, status: :ok
-    end
+    # def show
+    #     application = Application.find(params[:id])
+    #     render json: application, status: :ok
+    # end
 
     def create
         application = Application.create!(application_params)

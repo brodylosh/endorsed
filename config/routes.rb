@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :applications
-  resources :collaborators
-  resources :deals
-  resources :athletes
+  resources :applications, only: [:index, :create]
+  resources :collaborators, only: [:index, :show, :create]
+  resources :deals, only: [:index, :show, :create, :update]
+  resources :athletes, only: [:index, :show, :create]
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

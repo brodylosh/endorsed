@@ -13,6 +13,9 @@ class Collaborator < ApplicationRecord
     has_many :applications, through: :deals, source: :applications
     # has_many :athletes, through: :applications, source: :deals
 
+
+    # validates :name, presence: true
+    # validates :address, presence: true
     # validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
 
     # PASSWORD_REQUIREMENTS = /\A
