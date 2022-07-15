@@ -4,9 +4,11 @@ import { Card, Button, Modal } from 'react-bootstrap';
 function DealCard({ currentUser, deal }) {
   const [show, setShow] = useState(false);
 
-  let applied = deal.applications.some(
-    (application) => application.athlete_id == currentUser.id
-  );
+  let applied =
+    deal.athlete_id &&
+    deal.applications.some(
+      (application) => application.athlete_id == currentUser.id
+    );
   const [isApplied, setIsApplied] = useState(applied);
 
   const {
