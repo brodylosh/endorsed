@@ -177,3 +177,26 @@
   font-family: 'arial';
   font-size: 1rem;
 }
+
+.home-banner {
+  width: 100%;
+}
+
+.home-banner-text {
+  font-family: 'bindhu';
+  font-weight: bold;
+  font-size: 115px;
+  position: absolute;
+  top: 53%;
+  left: 53%;
+}
+
+.banner-container {
+  position: relative;
+}
+
+.card-container {
+  position: absolute;
+  top: 15%;
+  left: 4%
+}
