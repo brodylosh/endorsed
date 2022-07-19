@@ -14,11 +14,81 @@
   width: 100%;
 }
 
+.feature-image:hover {
+  opacity: .35;
+}
+
 .feature-image-header {
   position: absolute;
   top: 40%;
   width: 100%;
   z-index: 1;
+}
+
+.home-image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin-top: 100px;
+  width: 100%;
+}
+
+.home-image {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  z-index: 1;
+  opacity: .3;
+  height: 700px;
+  width: auto;
+  border-radius: 0px 50px 50px 0px;
+}
+
+.home-image:hover {
+  opacity: .6;
+}
+
+.home-image-right {
+  grid-column-start: 6;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  z-index: 1;
+  opacity: .3;
+  height: 700px;
+  width: auto;
+  border-radius: 50px 0px 0px 50px;
+}
+
+.home-image-right:hover {
+  opacity: .6;
+}
+
+.image-button {
+  grid-column-start: 1;
+  grid-column-end: auto;
+  grid-row-start: 1;
+  z-index: 2;
+  margin-top: 350px;
+}
+
+.image-button-right {
+  grid-column-start: 6;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  z-index: 2;
+  margin-top: 350px;
+}
+
+.get-endorsed-container {
+  margin-top: 220px;
+  margin-bottom: 100px;
+}
+
+.get-endorsed {
+  font-family: 'bindhu';
+  font-weight: bold;
+  font-size: 70px;
+  margin-left: 50%;
 }
 
 .form {

@@ -1,4 +1,4 @@
-import { Container, Button, Row, Col, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Home({ currentUser }) {
@@ -26,81 +26,44 @@ function Home({ currentUser }) {
           )}
         </div>
       </div>
-      <div className="banner-container">
+      <div className="home-image-container">
         <img
-          src="https://i.ibb.co/rvx2F9B/Home-Banner.png"
-          className="home-banner"
+          src="https://i.ibb.co/wMNSyzv/Michigan-State-Basketball-Huddle.jpg"
+          className="home-image"
         />
-        <h1 className="home-banner-text">get endorsed</h1>
+        <div className="image-button">
+          <Link to="/athletes">
+            <Button variant="success" className="home-button" size="lg">
+              View Athletes
+            </Button>
+          </Link>
+        </div>
       </div>
-      <div className="home-feature-image">
+      <div className="home-image-container">
         <img
-          src="https://i.ibb.co/mtQq0GF/MSU-WBB.jpg"
-          className="feature-image"
+          src="https://i.ibb.co/KxHWzVg/CJ-Stroud-Deal.jpg"
+          className="home-image-right"
         />
-        <Container className="card-container">
-          <Row xs={2} md={3} className="g-4">
-            <Col>
-              <Card className="card">
-                <Card.Img
-                  variant="top"
-                  src="https://www.gannett-cdn.com/presto/2021/09/26/PLSJ/62f86f5f-0e87-4c83-97f8-c20db15bf445-210925_msu_nebraska_146a.JPG"
-                  style={{ width: 'auto', height: 300, opacity: '1' }}
-                />
-                <Card.Body>
-                  <Card.Title>Athletes</Card.Title>
-                  <Card.Text>
-                    Football players to swimmers, graduate students to recruits,
-                    endorsed® graciously welcomes all of our student-athlete
-                    partners!
-                  </Card.Text>
-                  <Link to="/athletes">
-                    <Button variant="success">View Athletes</Button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src="https://nypost.com/wp-content/uploads/sites/2/2022/06/cj-stroud-gwagon-nil-deal-01.jpg"
-                  style={{ width: 'auto', height: 300, opacity: '1' }}
-                />
-                <Card.Body>
-                  <Card.Title>Deals</Card.Title>
-                  <Card.Text>
-                    Check out our deals marketplace. Where athletes meet
-                    collaborators, and deals turn to cash!! Get endorsed®!
-                  </Card.Text>
-                  <Link to="/deals">
-                    <Button variant="success">View Deals</Button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src="https://apksshare.com/wp-content/uploads/2021/06/Mercedes-me-APK-MOD-Download-1.12.0.png"
-                  style={{ width: 'auto', height: 300, opacity: '1' }}
-                />
-                <Card.Body>
-                  <Card.Title>Collaborators</Card.Title>
-                  <Card.Text>
-                    Global brands and local busineeses rely on endorsed® to
-                    faciliate brand deals, in order to take their business to
-                    the next level!
-                  </Card.Text>
-                  <Link to="/collaborators">
-                    <Button variant="success">View Collaborators</Button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+        <div className="image-button-right">
+          <Link to="/deals">
+            <Button variant="success" className="home-button" size="lg">
+              View Deals
+            </Button>
+          </Link>
+        </div>
+      </div>
+      <div className="home-image-container">
+        <img src="https://i.ibb.co/xmfyRtw/Nike.jpg" className="home-image" />
+        <div className="image-button">
+          <Link to="/collaborators">
+            <Button variant="success" className="home-button" size="lg">
+              View Collaborators
+            </Button>
+          </Link>
+        </div>
+      </div>
+      <div className="get-endorsed-container">
+        <h1 className="get-endorsed">get endorsed</h1>
       </div>
     </div>
   );
